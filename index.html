@@ -7,7 +7,7 @@
     <style>
         .wrapper {
             width: 100%;
-            height: 100%;
+            height: 100vh; /* تغییر ارتفاع برای پر کردن صفحه */
             position: relative;
             text-align: center;
             display: flex;
@@ -17,11 +17,11 @@
         }
 
         .inner {
-            --w: 100px; /* Width of the cards */
-            --h: 150px; /* Height of the cards */
+            --w: 100px; 
+            --h: 150px; 
             --translateZ: calc((var(--w) + var(--h)) + 0px);
-            --rotateX: -15deg; /* Rotation on X-axis */
-            --perspective: 1000px; /* Perspective effect */
+            --rotateX: -15deg; 
+            --perspective: 1000px; 
             
             position: absolute;
             width: var(--w);
@@ -31,7 +31,7 @@
             z-index: 2;
             transform-style: preserve-3d;
             transform: perspective(var(--perspective));
-            animation: rotating 20s linear infinite; /* Infinite rotation animation */
+            animation: rotating 20s linear infinite; 
         }
 
         @keyframes rotating {
