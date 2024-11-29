@@ -1,9 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
+<title>Slideshow</title>
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
-body {font-family: Arial, Helvetica, sans-serif;}
+body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", Arial, Helvetica, sans-serif}
 
 #myImg {
   border-radius: 5px;
@@ -45,30 +50,6 @@ body {font-family: Arial, Helvetica, sans-serif;}
   text-align: center;
   color: #ccc;
   padding: 10px 0;
-}
-
-/* Navigation Buttons */
-.prev, .next {
-    cursor: pointer;
-    position: absolute;
-    top: 50%;
-    width: auto;
-    padding: 16px;
-    color: white;
-    font-weight: bold;
-    font-size: 18px;
-    transition: 0.6s ease;
-    border-radius: 0px 3px 3px 0px;
-}
-
-.next {
-    right: 0;
-    border-radius: 3px 0px 0px 3px;
-}
-
-.prev:hover, .next:hover {
-    background-color: rgba(255,255,255,0.8);
-    color: black;
 }
 
 /* Add Animation */
@@ -113,59 +94,95 @@ body {font-family: Arial, Helvetica, sans-serif;}
 }
 </style>
 </head>
-<body>
+<body class="w3-light-grey">
 
-<h2>Image Modal</h2>
-<p>Click on the images below to view them in a modal with navigation.</p>
+<!-- Navigation Bar -->
+<div class="w3-bar w3-white w3-large">
+    <a href="#" class="w3-bar-item w3-button w3-red w3-mobile"><i class="fa fa-bed w3-margin-right"></i></a>
+    <a href="#rooms" class="w3-bar-item w3-button w3-mobile"></a>
+    <a href="#about" class="w3-bar-item w3-button w3-mobile"></a>
+    <a href="#contact" class="w3-bar-item w3-button w3-mobile"></a>
+    <a href="index.html" class="w3-bar-item w3-button w3-right w3-light-grey w3-mobile">home</a>
+</div>
 
-<img class="myImg" src="img_snow.jpg" alt="Snow" style="width:100%;max-width:300px">
-<img class="myImg" src="img_fjords.jpg" alt="Fjords" style="width:100%;max-width:300px">
-<img class="myImg" src="img_mountains.jpg" alt="Mountains" style="width:100%;max-width:300px">
+<p>&nbsp;</p>
+
+<table width="1000" border="0" align="center" cellpadding="4" cellspacing="1">
+    <tr>
+        <td align="center">
+            <video width="500" height="500" controls >
+                <source src="slideshow/video/slideshow1.mp4" type="video/mp4">
+            </video>
+            <h3>بازی پازل 8</h3>
+            <h6 class="w3-opacity">شامل تخفیف دانشجویی</h6>
+            <h3><p>شماره2</p></h3>
+            <p class="w3-large"><i class="fa fa-phone"></i> <i class="fa fa-wifi"></i> <i class="fa fa-tv"></i> <i class="fa fa-glass"></i></p>
+            <button class="w3-button w3-block w3-black w3-margin-bottom">قیمت : 600,000تومان</button>
+        </td>
+
+        <td align="center">
+            <video width="500" height="500" controls>
+                <source src="slideshow/video/slideshow2.mp4" type="video/mp4">
+            </video>
+            <h3>بازی رنگ ها</h3>
+            <h6 class="w3-opacity">شامل تخفیف دانشجویی</h6>
+            <h3><p>شماره1</p></h3>
+            <p class="w3-large"><i class="fa fa-phone"></i> <i class="fa fa-wifi"></i> <i class="fa fa-tv"></i> <i class="fa fa-glass"></i></p>
+            <button class="w3-button w3-block w3-black w3-margin-bottom">قیمت : 600,000تومان</button>
+        </td>
+    </tr>
+</table>
+
+<br>
+
+<div class="w3-row-padding" id="about">
+    <!-- Additional content here -->
+</div>
+
+<!-- Image Gallery -->
+<div class="w3-row-padding w3-large">
+    <div class="w3-third">
+        <img id="myImg1" src="game/image/1.jpg" alt="" style="width:100%" onclick="openModal(this)">
+    </div>
+    <div class="w3-third">
+        <img id="myImg2" src="game/image/2.jpg" alt="" style="width:100%" onclick="openModal(this)">
+    </div>
+    <div class="w3-third">
+        <img id="myImg3" src="game/image/4.png" alt="" style="width:100%" onclick="openModal(this)">
+    </div>
+</div>
 
 <!-- The Modal -->
 <div id="myModal" class="modal">
-   <span class="close">&times;</span>
-   <img class="modal-content" id="img01">
-   <div id="caption"></div>
-   <a class="prev" onclick="changeImage(-1)">&#10094;</a>
-   <a class="next" onclick="changeImage(1)">&#10095;</a>
+    <span class="close">&times;</span>
+    <img class="modal-content" id="img01">
+    <div id="caption"></div>
 </div>
 
 <script>
-// Get the modal
-var modal = document.getElementById("myModal");
-var modalImg = document.getElementById("img01");
-var captionText = document.getElementById("caption");
-var currentIndex = -1;
-
-// Get all images with class "myImg"
-var images = document.getElementsByClassName("myImg");
-
-// Function to open modal with clicked image
-for (let i = 0; i < images.length; i++) {
-    images[i].onclick = function() {
-        modal.style.display = "block";
-        modalImg.src = this.src;
-        captionText.innerHTML = this.alt;
-        currentIndex = i; // Set current index
-    }
+// Open the modal and display the clicked image
+function openModal(img) {
+    var modal = document.getElementById("myModal");
+    var modalImg = document.getElementById("img01");
+    var captionText = document.getElementById("caption");
+    
+    modal.style.display = "block";
+    modalImg.src = img.src; // Set the source of the modal image
+    captionText.innerHTML = img.alt; // Set the caption text
 }
 
-// Close the modal
+// Get the close button and close modal when clicked
 var span = document.getElementsByClassName("close")[0];
 span.onclick = function() { 
+    var modal = document.getElementById("myModal");
     modal.style.display = "none";
 }
-
-// Change image function
-function changeImage(n) {
-    currentIndex += n; // Update current index
-    if (currentIndex >= images.length) currentIndex = 0; // Loop back to first image
-    if (currentIndex < 0) currentIndex = images.length - 1; // Loop back to last image
-    modalImg.src = images[currentIndex].src; // Change image source
-    captionText.innerHTML = images[currentIndex].alt; // Update caption
-}
 </script>
+
+<!-- Footer -->
+<footer class="w3-padding-32 w3-black w3-center w3-margin-top">
+    <!-- Footer content here -->
+</footer>
 
 </body>
 </html>
