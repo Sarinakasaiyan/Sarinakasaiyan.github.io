@@ -1,22 +1,71 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Slideshow</title>
-<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
-body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", Arial, Helvetica, sans-serif}
-
-#myImg {
-  border-radius: 5px;
-  cursor: pointer;
-  transition: 0.3s;
+* {
+  box-sizing: border-box;
 }
 
-#myImg:hover {opacity: 0.7;}
+body {
+  background-color: #f1f1f1;
+  padding: 20px;
+  font-family: Arial;
+}
+
+/* Center website */
+.main {
+  max-width: 1000px;
+  margin: auto;
+}
+
+h1 {
+  font-size: 50px;
+  word-break: break-all;
+}
+
+.row {
+  margin: 8px -16px;
+}
+
+/* Add padding BETWEEN each column */
+.row,
+.row > .column {
+  padding: 8px;
+}
+
+/* Create four equal columns that float next to each other */
+.column {
+  float: left;
+  width: 25%;
+}
+
+/* Clear floats after rows */ 
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Content */
+.content {
+  background-color: white;
+  padding: 10px;
+}
+
+/* Responsive layout - makes a two column-layout instead of four columns */
+@media screen and (max-width: 900px) {
+  .column {
+    width: 50%;
+  }
+}
+
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+  }
+}
 
 /* The Modal (background) */
 .modal {
@@ -37,35 +86,15 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", Arial, Helvetica, sans-serif}
 .modal-content {
   margin: auto;
   display: block;
-  width: 80%;
-  max-width: 700px;
+  width: auto; /* Adjust to fit content */
 }
 
 /* Caption of Modal Image */
 #caption {
   margin: auto;
   display: block;
-  width: 80%;
-  max-width: 700px;
   text-align: center;
   color: #ccc;
-  padding: 10px 0;
-}
-
-/* Add Animation */
-.modal-content, #caption {  
-  -webkit-animation-name: zoom;
-  -webkit-animation-duration: 0.6s;
-}
-
-@-webkit-keyframes zoom {
-   from {-webkit-transform:scale(0)} 
-   to {-webkit-transform:scale(1)}
-}
-
-@keyframes zoom {
-   from {transform:scale(0)} 
-   to {transform:scale(1)}
 }
 
 /* The Close Button */
@@ -85,71 +114,57 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", Arial, Helvetica, sans-serif}
    text-decoration: none;
    cursor: pointer;
 }
-
-/* Responsive Image Width on Smaller Screens */
-@media only screen and (max-width: 700px){
-   .modal-content {
-       width:100%;
-   }
-}
 </style>
 </head>
-<body class="w3-light-grey">
+<body>
 
-<!-- Navigation Bar -->
-<div class="w3-bar w3-white w3-large">
-    <a href="#" class="w3-bar-item w3-button w3-red w3-mobile"><i class="fa fa-bed w3-margin-right"></i></a>
-    <a href="#rooms" class="w3-bar-item w3-button w3-mobile"></a>
-    <a href="#about" class="w3-bar-item w3-button w3-mobile"></a>
-    <a href="#contact" class="w3-bar-item w3-button w3-mobile"></a>
-    <a href="index.html" class="w3-bar-item w3-button w3-right w3-light-grey w3-mobile">home</a>
+<!-- MAIN (Center website) -->
+<div class="main">
+
+<h1>MYLOGO.COM</h1>
+<hr>
+
+<h2>PORTFOLIO</h2>
+<p>Resize the browser window to see the responsive effect.</p>
+
+<!-- Portfolio Gallery Grid -->
+<div class="row">
+    <div class="column">
+        <div class="content">
+            <img src="/w3images/mountains.jpg" alt="Mountains" style="width:100%" onclick="openModal(this)">
+            <h3>My Work</h3>
+            <p>Lorem ipsum dolor sit amet, tempor prodesset eos no. Temporibus necessitatibus sea ei, at tantas oporteat nam.</p>
+        </div>
+    </div>
+    <div class="column">
+        <div class="content">
+            <img src="/w3images/lights.jpg" alt="Lights" style="width:100%" onclick="openModal(this)">
+            <h3>My Work</h3>
+            <p>Lorem ipsum dolor sit amet, tempor prodesset eos no. Temporibus necessitatibus sea ei, at tantas oporteat nam.</p>
+        </div>
+    </div>
+    <div class="column">
+        <div class="content">
+            <img src="/w3images/nature.jpg" alt="Nature" style="width:100%" onclick="openModal(this)">
+            <h3>My Work</h3>
+            <p>Lorem ipsum dolor sit amet, tempor prodesset eos no. Temporibus necessitatibus sea ei, at tantas oporteat nam.</p>
+        </div>
+    </div>
+    <div class="column">
+        <div class="content">
+            <img src="/w3images/mountains.jpg" alt="Mountains" style="width:100%" onclick="openModal(this)">
+            <h3>My Work</h3>
+            <p>Lorem ipsum dolor sit amet, tempor prodesset eos no. Temporibus necessitatibus sea ei, at tantas oporteat nam.</p>
+        </div>
+    </div>
+<!-- END GRID -->
 </div>
 
-<p>&nbsp;</p>
-
-<table width="1000" border="0" align="center" cellpadding="4" cellspacing="1">
-    <tr>
-        <td align="center">
-            <video width="500" height="500" controls >
-                <source src="slideshow/video/slideshow1.mp4" type="video/mp4">
-            </video>
-            <h3>بازی پازل 8</h3>
-            <h6 class="w3-opacity">شامل تخفیف دانشجویی</h6>
-            <h3><p>شماره2</p></h3>
-            <p class="w3-large"><i class="fa fa-phone"></i> <i class="fa fa-wifi"></i> <i class="fa fa-tv"></i> <i class="fa fa-glass"></i></p>
-            <button class="w3-button w3-block w3-black w3-margin-bottom">قیمت : 600,000تومان</button>
-        </td>
-
-        <td align="center">
-            <video width="500" height="500" controls>
-                <source src="slideshow/video/slideshow2.mp4" type="video/mp4">
-            </video>
-            <h3>بازی رنگ ها</h3>
-            <h6 class="w3-opacity">شامل تخفیف دانشجویی</h6>
-            <h3><p>شماره1</p></h3>
-            <p class="w3-large"><i class="fa fa-phone"></i> <i class="fa fa-wifi"></i> <i class="fa fa-tv"></i> <i class="fa fa-glass"></i></p>
-            <button class="w3-button w3-block w3-black w3-margin-bottom">قیمت : 600,000تومان</button>
-        </td>
-    </tr>
-</table>
-
-<br>
-
-<div class="w3-row-padding" id="about">
-    <!-- Additional content here -->
-</div>
-
-<!-- Image Gallery -->
-<div class="w3-row-padding w3-large">
-    <div class="w3-third">
-        <img id="myImg1" src="game/image/1.jpg" alt="" style="width:100%" onclick="openModal(this)">
-    </div>
-    <div class="w3-third">
-        <img id="myImg2" src="game/image/2.jpg" alt="" style="width:100%" onclick="openModal(this)">
-    </div>
-    <div class="w3-third">
-        <img id="myImg3" src="game/image/4.png" alt="" style="width:100%" onclick="openModal(this)">
-    </div>
+<div class="content">
+    <img src="/w3images/p3.jpg" alt="Bear" style="width:100%" onclick="openModal(this)">
+    <h3>Some Other Work</h3>
+    <p>Lorem ipsum dolor sit amet, tempor prodesset eos no. Temporibus necessitatibus sea ei, at tantas oporteat nam.</p>
+    <p>Lorem ipsum dolor sit amet, tempor prodesset eos no. Temporibus necessitatibus sea ei, at tantas oporteat nam.</p>
 </div>
 
 <!-- The Modal -->
@@ -159,6 +174,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", Arial, Helvetica, sans-serif}
     <div id="caption"></div>
 </div>
 
+<!-- JavaScript for Modal Functionality -->
 <script>
 // Open the modal and display the clicked image
 function openModal(img) {
@@ -179,10 +195,8 @@ span.onclick = function() {
 }
 </script>
 
-<!-- Footer -->
-<footer class="w3-padding-32 w3-black w3-center w3-margin-top">
-    <!-- Footer content here -->
-</footer>
+<!-- END MAIN -->
+</div>
 
 </body>
 </html>
