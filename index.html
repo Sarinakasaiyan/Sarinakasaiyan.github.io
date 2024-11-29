@@ -7,13 +7,13 @@
     <style>
         body {
             font-family: Arial, sans-serif;
+            line-height: 1.6;
             margin: 0;
             padding: 0;
-            background-color: #f8f8f8;
         }
 
         header {
-            background-color: #d5006d; /* رنگ سرخابی */
+            background: #4CAF50;
             color: white;
             padding: 20px;
             text-align: center;
@@ -26,7 +26,7 @@
 
         nav ul li {
             display: inline;
-            margin: 0 15px;
+            margin-right: 20px;
         }
 
         nav ul li a {
@@ -34,37 +34,26 @@
             text-decoration: none;
         }
 
-        nav ul li a:hover {
-            text-decoration: underline;
-        }
-
-        main {
+        section {
             padding: 20px;
         }
 
-        section {
-            margin-bottom: 40px;
-        }
-
         .job {
-            background-color: #fff;
-            border-radius: 8px;
-            padding: 15px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
         }
 
         footer {
-            background-color: #d5006d; /* رنگ سرخابی */
-            color: white;
             text-align: center;
-            padding: 10px 0;
+            padding: 10px;
+            background: #333;
+            color: white;
         }
     </style>
 </head>
 <body>
     <header>
         <h1>نام شما</h1>
-        <p>عنوان شغلی شما</p>
+        <p>تخصص شما</p>
         <nav>
             <ul>
                 <li><a href="#about">درباره من</a></li>
@@ -75,47 +64,61 @@
         </nav>
     </header>
 
-    <main>
-        <section id="about">
-            <h2>درباره من</h2>
-            <p>متن کوتاهی درباره خودتان بنویسید. می‌توانید در مورد تحصیلات، علایق و اهداف شغلی خود صحبت کنید.</p>
-        </section>
+    <section id="about">
+        <h2>درباره من</h2>
+        <p>متن درباره شما...</p>
+    </section>
 
-        <section id="skills">
-            <h2>مهارت‌ها</h2>
-            <ul>
-                <li>مهارت ۱</li>
-                <li>مهارت ۲</li>
-                <li>مهارت ۳</li>
-                <li>مهارت ۴</li>
-            </ul>
-        </section>
+    <section id="skills">
+        <h2>مهارت‌ها</h2>
+        <ul>
+            <li>مهارت ۱</li>
+            <li>مهارت ۲</li>
+            <li>مهارت ۳</li>
+            <!-- اضافه کردن مهارت‌های بیشتر -->
+        </ul>
+    </section>
 
-        <section id="experience">
-            <h2>تجربه کاری</h2>
-            <div class="job">
-                <h3>عنوان شغلی ۱ - نام شرکت</h3>
-                <p>تاریخ شروع - تاریخ پایان</p>
-                <p>توضیحاتی درباره وظایف و دستاوردهای خود در این شغل.</p>
-            </div>
+    <section id="experience">
+        <h2>تجربه کاری</h2>
+        <div class="job">
+            <h3>عنوان شغل ۱</h3>
+            <p>توضیحات درباره شغل ۱...</p>
+        </div>
+        <div class="job">
+            <h3>عنوان شغل ۲</h3>
+            <p>توضیحات درباره شغل ۲...</p>
+        </div>
+        <!-- اضافه کردن تجربه‌های بیشتر -->
+    </section>
 
-            <div class="job">
-                <h3>عنوان شغلی ۲ - نام شرکت</h3>
-                <p>تاریخ شروع - تاریخ پایان</p>
-                <p>توضیحاتی درباره وظایف و دستاوردهای خود در این شغل.</p>
-            </div>
-        </section>
-
-        <section id="contact">
-            <h2>تماس با من</h2>
-            <p>برای تماس با من، لطفاً از طریق ایمیل زیر اقدام کنید:</p>
-            <p><strong>Email:</strong> info@example.com</p>
-        </section>
-    </main>
+    <section id="contact">
+        <h2>تماس با من</h2>
+        <form id="contact-form">
+            <input type="text" placeholder="نام" required />
+            <input type="email" placeholder="ایمیل" required />
+            <textarea placeholder="پیام" required></textarea>
+            <button type="submit">ارسال پیام</button>
+        </form>
+    </section>
 
     <footer>
-        <p>&copy; 2024 همه حقوق محفوظ است.</p>
+        <p>&copy; 2024 نام شما. تمام حقوق محفوظ است.</p>
     </footer>
 
+    <script>
+        document.getElementById('contact-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            const name = this.querySelector('input[type="text"]').value;
+            const email = this.querySelector('input[type="email"]').value;
+            const message = this.querySelector('textarea').value;
+
+            alert(`پیام شما با موفقیت ارسال شد!\nنام: ${name}\nایمیل: ${email}\nپیام: ${message}`);
+            
+            // Reset the form after submission
+            this.reset();
+        });
+    </script>
 </body>
 </html>
