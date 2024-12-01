@@ -152,9 +152,12 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
       <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
         <img src="images/sarinakasaiyan.jpg" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
         <span class="w3-right w3-opacity">1 min</span>
-      <h4>John Doe</h4><br>
+      <h4>Sarina Kasaiyan</h4><br>
         <hr class="w3-clear">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        <p>✔️MBTI personality: ENTJ
+
+I am currently a master's student in artificial intelligence, having completed my bachelor's degree in computer engineering. My specialty lies in robotics, and I work as a robotics instructor. Additionally, I am a skilled website designer and programmer. I possess strong expertise in content presentation and crisis management. Furthermore, I have experience as an internet sales expert within a company. I am also a trader, leveraging my analytical skills in the financial markets.
+</p>
           <div class="w3-row-padding" style="margin:0 -16px">
             <div class="w3-half">
               <img src="images/RoboticBook.jpg" style="width:100%" alt="Northern Lights" class="w3-margin-bottom">
@@ -181,17 +184,54 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
 
 
      
-     <div class="container">
+   <!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image and Video Side by Side</title>
+    <style>
+        .container {
+            display: flex; /* Use flexbox for layout */
+            justify-content: center; /* Center items horizontally */
+            align-items: center; /* Center items vertically */
+            margin: 20px; /* Add some margin around the container */
+        }
+
+        .item {
+            margin: 10px; /* Space between items */
+            flex: 1; /* Allow items to grow equally */
+            max-width: 400px; /* Set a maximum width for each item */
+        }
+
+        img, video {
+            width: 100%; /* Make image and video responsive */
+            height: auto; /* Maintain aspect ratio */
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column; /* Stack items vertically on small screens */
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
     <div class="item">
-        <img src="images/sarinakasaiyan.jpg" alt="Robotic Book" style="width: 100%; height: auto;">
+        <img src="images/RoboticBook.jpg" alt="Robotic Book">
     </div>
     <div class="item">
-        <video controls style="width: 100%; height: auto;">
+        <video controls>
             <source src="video/sarinakasaiyan2.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
     </div>
 </div>
+
+</body>
+</html>
 
 
 
