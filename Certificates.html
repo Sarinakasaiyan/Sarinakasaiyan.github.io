@@ -1,9 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>My Certificates</title>
 <style>
 * {
   box-sizing: border-box;
@@ -12,11 +10,12 @@
 body {
   background-color: #f1f1f1;
   padding: 20px;
-  font-family: Arial, sans-serif;
+  font-family: Arial;
 }
 
+/* Center website */
 .main {
-  max-width: 1200px;
+  max-width: 1000px;
   margin: auto;
 }
 
@@ -29,30 +28,35 @@ h1 {
   margin: 10px -16px;
 }
 
+/* Add padding BETWEEN each column */
+.row,
+.row > .column {
+  padding: 8px;
+}
+
+/* Create three equal columns that floats next to each other */
 .column {
   float: left;
   width: 33.33%;
   display: none; /* Hide all elements by default */
 }
 
+/* Clear floats after rows */ 
 .row:after {
   content: "";
   display: table;
   clear: both;
 }
 
+/* Content */
 .content {
   background-color: white;
   padding: 10px;
 }
 
-/* Set fixed height for the last three images */
-.content img {
-  width: 100%;
-}
-
+/* The "show" class is added to the filtered elements */
 .show {
-  display: block; /* Show filtered elements */
+  display: block;
 }
 
 /* Style the buttons */
@@ -65,11 +69,11 @@ h1 {
 }
 
 .btn:hover {
-  background-color: #ddd; /* Hover effect */
+  background-color: #ddd;
 }
 
 .btn.active {
-  background-color: #666; /* Active button style */
+  background-color: #666;
   color: white;
 }
 
@@ -85,14 +89,15 @@ h1 {
   height: 100%; /* Full height */
   overflow: auto; /* Enable scroll if needed */
   background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.9); /* Black with opacity */
+  background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
 }
 
 /* Modal Content (image) */
 .modal-content {
     margin:auto;
     display:block;
-    width:auto; /* Adjust to fit content */
+    max-width:90%; /* Limit max width for modal image */
+    max-height:80vh; /* Limit max height for modal image */
 }
 
 /* Caption of Modal Image */
@@ -124,6 +129,7 @@ h1 {
 </head>
 <body>
 
+<!-- MAIN (Center website) -->
 <div class="main">
 
 <h1>My Certificates</h1>
@@ -132,30 +138,31 @@ h1 {
 <h2>Certificates</h2>
 
 <div id="myBtnContainer">
-    <button class="btn active" onclick="filterSelection('all')">Show all</button>
-    <button class="btn" onclick="filterSelection('nature')">NBML</button>
-    <button class="btn" onclick="filterSelection('cars')">ICT CHALLENGE</button>
-    <button class="btn" onclick="filterSelection('people')">IAU</button>
+    <button class="btn active" onclick="filterSelection('all')"> Show all</button>
+    <button class="btn" onclick="filterSelection('nature')"> NBML</button>
+    <button class="btn" onclick="filterSelection('cars')"> ICT CHALLENGE</button>
+    <button class="btn" onclick="filterSelection('people')"> IAU</button>
 </div>
 
+<!-- Portfolio Gallery Grid -->
 <div class="row">
     <div class="column nature">
         <div class="content">
-            <img src="Certificates/CertificatesArticle1.jpg" alt="Article" onclick="openModal(this)">
+            <img src="Certificates/CertificatesArticle1.jpg" alt="Mountains" style="width:100%" onclick="openModal(this)">
             <h4></h4>
             <p></p>
         </div>
     </div>
     <div class="column nature">
         <div class="content">
-            <img src="Certificates/CertificatesNBML1.png" alt="NBML Certificate" onclick="openModal(this)">
+            <img src="Certificates/CertificatesNBML1.png" alt="Lights" style="width:100%" onclick="openModal(this)">
             <h4></h4>
             <p></p>
         </div>
     </div>
     <div class="column nature">
         <div class="content">
-            <img src="Certificates/CertificatesNBML2.png" alt="NBML Certificate" onclick="openModal(this)">
+            <img src="Certificates/CertificatesNBML2.png" alt="Nature" style="width:100%" onclick="openModal(this)">
             <h4></h4>
             <p></p>
         </div>
@@ -163,32 +170,21 @@ h1 {
 
     <div class="column cars">
         <div class="content">
-            <img src="Certificates/CertificatesSharif Front end1.jpg" alt="Sharif Frontend Certificate" onclick="openModal(this)">
+            <img src="Certificates/CertificatesSharif Front end1.jpg" alt="Car" style="width:100%" onclick="openModal(this)">
             <h4></h4>
             <p></p>
         </div>
     </div>
-    
     <div class="column cars">
         <div class="content">
-            <img src="Certificates/Certificatesunesco1.png" alt="UNESCO Certificate" onclick="openModal(this)">
+            <img src="Certificates/Certificatesunesco1.png " alt="Car" style="width:100%" onclick="openModal(this)">
             <h4></h4>
             <p></p>
         </div>
     </div>
-
-    <!-- Three last images with fixed height -->
-    <div class="column people">
+    <div class="column cars">
         <div class="content">
-            <img src="Certificates/CertificatesManuscript Submission Skills1.png" alt="Manuscript Submission Skills Certificate" onclick="openModal(this)" style="height:300px;">
-            <h4></h4>
-            <p></p>
-        </div>
-    </div>
-
-    <div class="column people">
-        <div class="content">
-            <img src="Certificates/CertificatesIAU2.jpg" alt="IAU Certificate" onclick="openModal(this)" style="height:300px;">
+            <img src="Certificates/CertificatesCovid19_1.jpg " alt="Car" style="width:100%" onclick="openModal(this)">
             <h4></h4>
             <p></p>
         </div>
@@ -196,21 +192,37 @@ h1 {
 
     <div class="column people">
         <div class="content">
-            <img src="Certificates/CertificatesIAU1.jpg" alt="IAU Certificate" onclick="openModal(this)" style="height:300px;">
+            <img src="Certificates/CertificatesManuscript Submission Skills1.png" alt="Car" style="width:100%" onclick="openModal(this)">
             <h4></h4>
             <p></p>
+        </div>
+    </div>
+    <div class="column people">
+        <div class="content">
+            <img src="Certificates/CertificatesIAU2.jpg" alt="Car" style="width:100% " onclick="openModal(this)">
+             <h4></h4>
+            <p></p>
+        </div>
+    </div>
+    <div class="column people">
+        <div class="content">
+            <img src="Certificates/CertificatesIAU1.jpg" alt="Car" style="width:100% " onclick="openModal(this)">
+                <h4></h4>
+                <p></p>
         </div>
     </div>
 
 <!-- END GRID -->
 </div>
 
+<!-- The Modal -->
 <div id="myModal" class="modal">
     <span class="close">&times;</span>
     <img class="modal-content" id="img01">
     <div id="caption"></div>
 </div>
 
+<!-- JavaScript for Filter and Modal Functionality -->
 <script>
 // Filter selection function
 filterSelection("all")
@@ -270,14 +282,30 @@ function openModal(img) {
     var captionText = document.getElementById("caption");
     
     modal.style.display = "block";
-    modalImg.src = img.src; // Set the source of the modal image
-    captionText.innerHTML = img.alt; // Set the caption text
+    
+    // Set the source of the modal image
+    modalImg.src = img.src;
+
+	// Set the caption text
+	captionText.innerHTML = img.alt;
+
+	// Adjust image size in modal
+	modalImg.onload = function() {
+		if (this.naturalWidth > this.naturalHeight) {
+			this.style.width = '80%';
+			this.style.height = 'auto';
+		} else {
+			this.style.height = '80vh';
+			this.style.width = 'auto';
+		}
+	}
 }
 
 // Get the close button and close modal when clicked
 var span = document.getElementsByClassName("close")[0];
 span.onclick = function() { 
-   document.getElementById("myModal").style.display = "none";
+   var modal = document.getElementById("myModal");
+   modal.style.display = "none";
 }
 </script>
 
