@@ -1,689 +1,856 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>sarinakasaiyan</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-blue-grey.css">
-<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<style>
-html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
-</style>
+    <title>Sarina Kasaiyan — AI & Robotics</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-blue-grey.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        /* ── reset & base ── */
+        * {
+            box-sizing: border-box;
+        }
+        html,
+        body {
+            font-family: 'Inter', 'Open Sans', sans-serif;
+            background: #f0f2f5;
+            scroll-behavior: smooth;
+        }
+        a {
+            text-decoration: none;
+        }
+        .w3-theme-l5 {
+            background: #f0f2f5 !important;
+        }
+
+        /* ── navbar ── */
+        .navbar-custom {
+            background: #1e2a3a !important;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            padding: 0 16px;
+        }
+        .navbar-custom .w3-bar-item {
+            color: #e8edf3 !important;
+            font-weight: 500;
+            font-size: 14px;
+            letter-spacing: 0.3px;
+            transition: 0.2s;
+        }
+        .navbar-custom .w3-bar-item:hover {
+            color: #fff !important;
+            background: rgba(255, 255, 255, 0.08) !important;
+        }
+        .navbar-custom .w3-bar-item.w3-theme-d4 {
+            background: #0f1a2b !important;
+            font-weight: 600;
+        }
+        .navbar-custom .w3-dropdown-hover button {
+            color: #e8edf3 !important;
+        }
+        .navbar-custom .w3-dropdown-content {
+            background: #1e2a3a;
+            border-radius: 8px;
+            border: none;
+        }
+        .navbar-custom .w3-dropdown-content a {
+            color: #e8edf3 !important;
+        }
+        .navbar-custom .w3-dropdown-content a:hover {
+            background: rgba(255, 255, 255, 0.06) !important;
+        }
+
+        /* ── cards ── */
+        .card-prof {
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+            transition: transform 0.15s ease, box-shadow 0.2s ease;
+            background: #fff;
+            border: 1px solid rgba(0, 0, 0, 0.02);
+        }
+        .card-prof:hover {
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.07);
+        }
+        .card-prof .w3-container {
+            padding: 20px 22px;
+        }
+
+        .post-card {
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+            transition: transform 0.15s ease, box-shadow 0.2s ease;
+            background: #fff;
+            border: 1px solid rgba(0, 0, 0, 0.02);
+            padding: 18px 22px 10px 22px;
+            margin-bottom: 20px;
+        }
+        .post-card:hover {
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.07);
+        }
+        .post-card .w3-clear {
+            border-color: #eef1f5;
+        }
+
+        /* ── profile avatar ── */
+        .avatar-lg {
+            width: 106px;
+            height: 106px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid #e8edf3;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+        }
+        .avatar-sm {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 3px solid #eef1f5;
+        }
+
+        /* ── social icons ── */
+        .social-row a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #eef1f5;
+            color: #1e2a3a;
+            font-size: 18px;
+            transition: 0.2s;
+            margin: 0 3px;
+        }
+        .social-row a:hover {
+            background: #1e2a3a;
+            color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.10);
+        }
+
+        /* ── tags / interests ── */
+        .tag-custom {
+            border-radius: 40px;
+            padding: 4px 14px;
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 0.2px;
+            background: #eef1f5;
+            color: #1e2a3a;
+            margin: 2px 3px 2px 0;
+            display: inline-block;
+            transition: 0.15s;
+        }
+        .tag-custom:hover {
+            background: #d0d7e0;
+        }
+
+        /* ── buttons ── */
+        .btn-outline-theme {
+            background: transparent;
+            border: 1.5px solid #cbd5e1;
+            color: #1e2a3a;
+            border-radius: 40px;
+            padding: 6px 18px;
+            font-weight: 500;
+            font-size: 13px;
+            transition: 0.2s;
+        }
+        .btn-outline-theme:hover {
+            background: #1e2a3a;
+            border-color: #1e2a3a;
+            color: #fff;
+        }
+        .btn-solid-theme {
+            background: #1e2a3a;
+            border: none;
+            color: #fff;
+            border-radius: 40px;
+            padding: 8px 22px;
+            font-weight: 500;
+            font-size: 13px;
+            transition: 0.2s;
+        }
+        .btn-solid-theme:hover {
+            background: #0f1a2b;
+            transform: translateY(-1px);
+            box-shadow: 0 6px 18px rgba(30, 42, 58, 0.20);
+        }
+
+        /* ── video / image containers ── */
+        .media-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin: 12px 0 8px 0;
+        }
+        .media-grid .media-item {
+            flex: 1 1 200px;
+            min-width: 160px;
+            border-radius: 12px;
+            overflow: hidden;
+            background: #f8f9fb;
+            border: 1px solid #eef1f5;
+        }
+        .media-grid .media-item video,
+        .media-grid .media-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 12px;
+        }
+
+        /* ── right column research cards ── */
+        .research-card {
+            border-radius: 16px;
+            background: #fff;
+            padding: 18px 16px 16px 16px;
+            text-align: center;
+            border: 1px solid rgba(0, 0, 0, 0.02);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+            margin-bottom: 18px;
+        }
+        .research-card img {
+            border-radius: 10px;
+            max-width: 100%;
+            height: auto;
+        }
+        .research-card .btn-download {
+            border-radius: 40px;
+            padding: 8px 12px;
+            font-size: 13px;
+            font-weight: 500;
+            background: #eef1f5;
+            color: #1e2a3a;
+            transition: 0.2s;
+            display: block;
+            width: 100%;
+            border: none;
+            cursor: pointer;
+        }
+        .research-card .btn-download:hover {
+            background: #1e2a3a;
+            color: #fff;
+        }
+
+        /* ── footer ── */
+        .footer-main {
+            background: #1e2a3a;
+            color: #cbd5e1;
+            padding: 40px 24px 28px 24px;
+            border-radius: 20px 20px 0 0;
+            margin-top: 32px;
+        }
+        .footer-main h3 {
+            color: #fff;
+            font-weight: 600;
+            font-size: 18px;
+            margin-bottom: 12px;
+        }
+        .footer-main a {
+            color: #cbd5e1;
+            transition: 0.2s;
+        }
+        .footer-main a:hover {
+            color: #fff;
+        }
+        .footer-main .w3-tag {
+            border-radius: 40px;
+            padding: 4px 14px;
+            font-size: 12px;
+            font-weight: 500;
+            margin: 2px 2px 2px 0;
+            background: rgba(255, 255, 255, 0.06);
+            color: #cbd5e1;
+        }
+        .footer-main .w3-tag:hover {
+            background: rgba(255, 255, 255, 0.14);
+        }
+
+        /* ── responsive tweaks ── */
+        @media (max-width: 600px) {
+            .post-card {
+                padding: 14px 16px 8px 16px;
+            }
+            .card-prof .w3-container {
+                padding: 14px 16px;
+            }
+            .media-grid {
+                flex-direction: column;
+            }
+            .media-grid .media-item {
+                flex: 1 1 auto;
+            }
+        }
+
+        /* ── misc ── */
+        .w3-opacity {
+            opacity: 0.6;
+        }
+        .w3-theme-l1 {
+            background: #eef1f5 !important;
+            color: #1e2a3a !important;
+        }
+        .w3-theme-l1:hover {
+            background: #dce1e9 !important;
+        }
+        .badge-dot {
+            background: #4caf50;
+            color: #fff;
+            border-radius: 40px;
+            padding: 2px 10px;
+            font-size: 11px;
+            font-weight: 600;
+            margin-left: 6px;
+        }
+        .hr-custom {
+            border: 0;
+            height: 1px;
+            background: #eef1f5;
+            margin: 14px 0;
+        }
+        .profile-label {
+            font-size: 14px;
+            font-weight: 500;
+            color: #1e2a3a;
+        }
+        .profile-label i {
+            width: 22px;
+            color: #64748b;
+        }
+        .border-bottom-light {
+            border-bottom: 1px solid #eef1f5;
+        }
+        .gap-2 {
+            gap: 6px;
+        }
+        .text-muted {
+            color: #64748b;
+        }
+        .fw-500 {
+            font-weight: 500;
+        }
+    </style>
 </head>
 <body class="w3-theme-l5">
 
-<!-- Navbar -->
-<div class="w3-top">
- <div class="w3-bar w3-theme-d2 w3-left-align w3-large">
-  <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-theme-d2" href="javascript:void(0);" onclick="openNav()"><i class="fa fa-bars"></i></a>
-  <a href="#" class="w3-bar-item w3-button w3-padding-large w3-theme-d4"><i class="fa fa-home w3-margin-right"></i>SARINA</a>
-  <a href="Projects.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="Projects"><i class="fa fa-globe">Blog</i></a>
-  <a href="Certificates.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="Certificates"><i class="fa fa-user"></i>Certificates</a>
-  <a href="Projects/index.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="Robotics"><i class="fa fa-envelope">Projects</i></a>
-  <div class="w3-dropdown-hover w3-hide-small">
-    <button class="w3-button w3-padding-large" title="Notifications"><i class="fa fa-bell"></i><span class="w3-badge w3-right w3-small w3-green">3</span></button>     
-    <div class="w3-dropdown-content w3-card-4 w3-bar-block" style="width:300px">
-      <a href="#" class="w3-bar-item w3-button"></a>
-      <a href="#" class="w3-bar-item w3-button"></a>
-      <a href="#" class="w3-bar-item w3-button"></a>
-    </div>
-  </div>
- 
-  <a href="#" class="w3-bar-item w3-button w3-hide-small w3-right w3-padding-large w3-hover-white" title="My Account">
-    <img src="images/sarinakasaiyan.jpg" class="w3-circle" style="height:23px;width:23px" alt="Avatar">
-  </a>
- </div>
-</div>
+    <!-- ============================================================ -->
+    <!-- NAVBAR -->
+    <!-- ============================================================ -->
+    <div class="w3-top">
+        <div class="w3-bar navbar-custom w3-left-align w3-large" style="z-index:4;">
+            <a href="#" class="w3-bar-item w3-button w3-padding-large w3-theme-d4" style="font-weight:600;">
+                <i class="fas fa-robot w3-margin-right"></i>SARINA
+            </a>
+            <a href="Projects.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large">
+                <i class="fas fa-blog w3-margin-right"></i>Blog
+            </a>
+            <a href="Certificates.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large">
+                <i class="fas fa-certificate w3-margin-right"></i>Certificates
+            </a>
+            <a href="Projects/index.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large">
+                <i class="fas fa-code w3-margin-right"></i>Projects
+            </a>
 
-<!-- Navbar on small screens -->
-<div id="navDemo" class="w3-bar-block w3-theme-d2 w3-hide w3-hide-large w3-hide-medium w3-large">
-  <a href="#" class="w3-bar-item w3-button w3-padding-large">Link 1</a>
-  <a href="#" class="w3-bar-item w3-button w3-padding-large">Link 2</a>
-  <a href="#" class="w3-bar-item w3-button w3-padding-large">Link 3</a>
-  <a href="#" class="w3-bar-item w3-button w3-padding-large">My Profile</a>
-</div>
+            <!-- dropdown -->
+            <div class="w3-dropdown-hover w3-hide-small">
+                <button class="w3-button w3-padding-large">
+                    <i class="fas fa-bell"></i>
+                    <span class="w3-badge w3-right w3-small w3-green" style="border-radius:40px;">3</span>
+                </button>
+                <div class="w3-dropdown-content w3-card-4 w3-bar-block" style="width:260px; border-radius:12px; background:#1e2a3a;">
+                    <a href="#" class="w3-bar-item w3-button">Notification 1</a>
+                    <a href="#" class="w3-bar-item w3-button">Notification 2</a>
+                    <a href="#" class="w3-bar-item w3-button">Notification 3</a>
+                </div>
+            </div>
 
-<!-- Page Container -->
-<div class="w3-container w3-content" style="max-width:1400px;margin-top:80px">    
-  <!-- The Grid -->
-  <div class="w3-row">
-    <!-- Left Column -->
-    <div class="w3-col m3">
-      <!-- Profile -->
-      <div class="w3-card w3-round w3-white">
-        <div class="w3-container">
-         <h4 class="w3-center">My Profile</h4>
-         <p class="w3-center"><img src="images/sarinakasaiyan.jpg" class="w3-circle" style="height:106px;width:106px" alt="Avatar"></p>
-         <hr>
-         <p><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme"></i>Artificial intelligence|Robotic|WD </p>
-         <p><i class="fa fa-home fa-fw w3-margin-right w3-text-theme"></i> Tehran, Iran</p>
-         <p><i class="fa fa-birthday-cake fa-fw w3-margin-right w3-text-theme"></i> March 25, 2000</p>  
+            <!-- avatar right -->
+            <a href="#" class="w3-bar-item w3-button w3-hide-small w3-right w3-padding-large">
+                <img src="images/sarinakasaiyan.jpg" class="w3-circle" style="height:30px;width:30px;object-fit:cover;border:2px solid rgba(255,255,255,0.2);" alt="Avatar">
+            </a>
 
-         <center>
-<!-- Add font awesome icons -->
-<a href="https://github.com/Sarinakasaiyan" class="fa fa-github"></a>
-<a href="https://www.linkedin.com/in/sarina-kasaiyan/" class="fa fa-linkedin"></a>
-<a href="https://stackoverflow.com/users/28948358/sarinakasaiyan" class="fa fa-stack-overflow"></a>
-<a href="https://huggingface.co/sarinazkasaiayn" class="fa fa-huggingface"></a>
- <a href="https://sarinakasaiayn@gmail.com" class="fa fa-Gmail"></a>
-
-</center>
-
-         
+            <!-- mobile menu -->
+            <a href="javascript:void(0);" class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large" onclick="openNav()">
+                <i class="fas fa-bars"></i>
+            </a>
         </div>
-      </div>
-      <br>
-      
-      <!-- Accordion -->
-      <div class="w3-card w3-round">
-        <div class="w3-white">
-          <button onclick="myFunction('Demo1')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-circle-o-notch fa-fw w3-margin-right"></i> My Groups</button>
-          <div id="Demo1" class="w3-hide w3-container">
-            <p>Some text..</p>
-          </div>
-          <button onclick="myFunction('Demo2')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-calendar-check-o fa-fw w3-margin-right"></i> My Events</button>
-          <div id="Demo2" class="w3-hide w3-container">
-            <p>Some other text..</p>
-          </div>
-          <button onclick="myFunction('Demo3')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-users fa-fw w3-margin-right"></i> My Photos</button>
-          <div id="Demo3" class="w3-hide w3-container">
-         <div class="w3-row-padding">
-         <br>
-           <div class="w3-half">
-             <img src="/w3images/lights.jpg" style="width:100%" class="w3-margin-bottom">
-           </div>
-           <div class="w3-half">
-             <img src="/w3images/nature.jpg" style="width:100%" class="w3-margin-bottom">
-           </div>
-           <div class="w3-half">
-             <img src="/w3images/mountains.jpg" style="width:100%" class="w3-margin-bottom">
-           </div>
-           <div class="w3-half">
-             <img src="/w3images/forest.jpg" style="width:100%" class="w3-margin-bottom">
-           </div>
-           <div class="w3-half">
-             <img src="/w3images/nature.jpg" style="width:100%" class="w3-margin-bottom">
-           </div>
-           <div class="w3-half">
-             <img src="/w3images/snow.jpg" style="width:100%" class="w3-margin-bottom">
-           </div>
-         </div>
-          </div>
-        </div>      
-      </div>
-      <br>
-      
-      <!-- Interests --> 
-      <div class="w3-card w3-round w3-white w3-hide-small">
-        <div class="w3-container">
-          <p>Interests</p>
-          <p>
-            <span class="w3-tag w3-small w3-theme-d5">Robotic</span>
-            <span class="w3-tag w3-small w3-theme-d4">Reinforcement Learning</span>
-            <span class="w3-tag w3-small w3-theme-d3">Machine Learning</span>
-            <span class="w3-tag w3-small w3-theme-d2">Deep Learning</span>
-            <span class="w3-tag w3-small w3-theme-d1">Brain computer Interface (BCI)</span>
-            <span class="w3-tag w3-small w3-theme">Natural Language Processing (NLP)</span>
-            <span class="w3-tag w3-small w3-theme-l1">Web developer</span>
-            <span class="w3-tag w3-small w3-theme-l2">Front-end</span>
-            <span class="w3-tag w3-small w3-theme-l3">Back-end</span>
-          
-          </p>
-        </div>
-      </div>
-      <br>
-      
-      <!-- Alert Box -->
-      <div class="w3-container w3-display-container w3-round w3-theme-l4 w3-border w3-theme-border w3-margin-bottom w3-hide-small">
-        <span onclick="this.parentElement.style.display='none'" class="w3-button w3-theme-l3 w3-display-topright">
-          <i class="fa fa-remove"></i>
-        </span>
-        <p><strong>Hey!</strong></p>
-        <p>People are looking at your profile. Find out who.</p>
-      </div>
-    
-    <!-- End Left Column -->
     </div>
-    
-    <!-- Middle Column -->
-    <div class="w3-col m7">
-    
-      <div class="w3-row-padding">
-        <div class="w3-col m12">
-          <div class="w3-card w3-round w3-white">
-            <div class="w3-container w3-padding">
-              <h6 class="w3-opacity">SARINA</h6>
-              <p contenteditable="true" class="w3-border w3-padding">Where ideas Meet Innovation Let's Build Robots </p>
-             <button type="button" class="w3-button w3-theme">
-    <a href="mailto:sarinakasaiyan@gmail.com" style="color: white; text-decoration: none;">
-        <i class="fa fa-pencil"></i> Gmail
-    </a>
-</button>
 
+    <!-- mobile nav -->
+    <div id="navDemo" class="w3-bar-block w3-theme-d2 w3-hide w3-hide-large w3-hide-medium w3-large" style="background:#1e2a3a;margin-top:46px;padding:8px 0;">
+        <a href="#" class="w3-bar-item w3-button w3-padding-large" style="color:#e8edf3;">Blog</a>
+        <a href="#" class="w3-bar-item w3-button w3-padding-large" style="color:#e8edf3;">Certificates</a>
+        <a href="#" class="w3-bar-item w3-button w3-padding-large" style="color:#e8edf3;">Projects</a>
+        <a href="#" class="w3-bar-item w3-button w3-padding-large" style="color:#e8edf3;">Profile</a>
     </div>
-          </div>
+
+    <!-- ============================================================ -->
+    <!-- PAGE CONTAINER -->
+    <!-- ============================================================ -->
+    <div class="w3-container w3-content" style="max-width:1400px;margin-top:80px;padding:0 12px;">
+
+        <div class="w3-row">
+
+            <!-- ========================================================== -->
+            <!-- LEFT COLUMN -->
+            <!-- ========================================================== -->
+            <div class="w3-col m3" style="padding-right:12px;">
+
+                <!-- Profile card -->
+                <div class="card-prof">
+                    <div class="w3-container">
+                        <h4 class="w3-center" style="font-weight:600;margin-top:4px;">My Profile</h4>
+                        <p class="w3-center">
+                            <img src="images/sarinakasaiyan.jpg" class="avatar-lg" alt="Avatar">
+                        </p>
+                        <hr class="hr-custom">
+
+                        <p class="profile-label"><i class="fas fa-pencil-alt fa-fw w3-margin-right"></i>AI · Robotics · WD</p>
+                        <p class="profile-label"><i class="fas fa-map-marker-alt fa-fw w3-margin-right"></i>Tehran, Iran</p>
+                        <p class="profile-label"><i class="fas fa-birthday-cake fa-fw w3-margin-right"></i>March 25, 2000</p>
+
+                        <!-- social -->
+                        <div class="social-row w3-center" style="margin:16px 0 6px 0;">
+                            <a href="https://github.com/Sarinakasaiyan" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                            <a href="https://www.linkedin.com/in/sarina-kasaiyan/" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="https://stackoverflow.com/users/28948358/sarinakasaiyan" aria-label="Stack Overflow"><i class="fab fa-stack-overflow"></i></a>
+                            <a href="https://huggingface.co/sarinazkasaiayn" aria-label="Hugging Face"><i class="fas fa-robot"></i></a>
+                            <a href="mailto:sarinakasaiyan@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <br>
+
+                <!-- Groups / Accordion -->
+                <div class="card-prof">
+                    <div class="w3-container" style="padding:6px 22px 16px 22px;">
+                        <button onclick="myFunction('Demo1')" class="w3-button w3-block w3-theme-l1 w3-left-align" style="border-radius:40px;margin:4px 0;font-weight:500;">
+                            <i class="fas fa-circle-notch fa-fw w3-margin-right"></i> My Groups
+                        </button>
+                        <div id="Demo1" class="w3-hide w3-container" style="padding-top:8px;">
+                            <p class="text-muted" style="font-size:14px;">Some text..</p>
+                        </div>
+
+                        <button onclick="myFunction('Demo2')" class="w3-button w3-block w3-theme-l1 w3-left-align" style="border-radius:40px;margin:4px 0;font-weight:500;">
+                            <i class="fas fa-calendar-check fa-fw w3-margin-right"></i> My Events
+                        </button>
+                        <div id="Demo2" class="w3-hide w3-container" style="padding-top:8px;">
+                            <p class="text-muted" style="font-size:14px;">Some other text..</p>
+                        </div>
+
+                        <button onclick="myFunction('Demo3')" class="w3-button w3-block w3-theme-l1 w3-left-align" style="border-radius:40px;margin:4px 0;font-weight:500;">
+                            <i class="fas fa-images fa-fw w3-margin-right"></i> My Photos
+                        </button>
+                        <div id="Demo3" class="w3-hide w3-container" style="padding-top:8px;">
+                            <div class="w3-row-padding">
+                                <div class="w3-half"><img src="/w3images/lights.jpg" style="width:100%;border-radius:8px;" class="w3-margin-bottom"></div>
+                                <div class="w3-half"><img src="/w3images/nature.jpg" style="width:100%;border-radius:8px;" class="w3-margin-bottom"></div>
+                                <div class="w3-half"><img src="/w3images/mountains.jpg" style="width:100%;border-radius:8px;" class="w3-margin-bottom"></div>
+                                <div class="w3-half"><img src="/w3images/forest.jpg" style="width:100%;border-radius:8px;" class="w3-margin-bottom"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+
+                <!-- Interests -->
+                <div class="card-prof w3-hide-small">
+                    <div class="w3-container">
+                        <p style="font-weight:600;font-size:15px;margin-bottom:8px;">Interests</p>
+                        <div>
+                            <span class="tag-custom">Robotic</span>
+                            <span class="tag-custom">Reinforcement Learning</span>
+                            <span class="tag-custom">Machine Learning</span>
+                            <span class="tag-custom">Deep Learning</span>
+                            <span class="tag-custom">Brain Computer Interface (BCI)</span>
+                            <span class="tag-custom">Natural Language Processing (NLP)</span>
+                            <span class="tag-custom">Web developer</span>
+                            <span class="tag-custom">Front-end</span>
+                            <span class="tag-custom">Back-end</span>
+                        </div>
+                    </div>
+                </div>
+                <br>
+
+                <!-- Alert -->
+                <div class="w3-container w3-display-container w3-round w3-theme-l4 w3-border w3-theme-border w3-margin-bottom w3-hide-small" style="border-radius:16px;padding:16px 20px;background:#e8f0fe;border-color:#d0dcec !important;">
+                    <span onclick="this.parentElement.style.display='none'" class="w3-button w3-theme-l3 w3-display-topright" style="border-radius:50%;background:transparent;font-size:18px;">
+                        <i class="fas fa-times"></i>
+                    </span>
+                    <p><strong style="font-weight:600;">Hey!</strong></p>
+                    <p style="font-size:14px;color:#1e2a3a;">People are looking at your profile. Find out who.</p>
+                </div>
+
+            </div> <!-- end left column -->
+
+
+            <!-- ========================================================== -->
+            <!-- MIDDLE COLUMN -->
+            <!-- ========================================================== -->
+            <div class="w3-col m7" style="padding:0 12px;">
+
+                <!-- status box -->
+                <div class="post-card" style="padding:16px 22px;">
+                    <div class="w3-row-padding">
+                        <div class="w3-col m12">
+                            <h6 class="w3-opacity" style="font-weight:500;font-size:13px;margin:0 0 4px 0;">SARINA</h6>
+                            <p contenteditable="true" class="w3-border w3-padding" style="border-radius:12px;border-color:#eef1f5 !important;background:#fafbfc;font-size:15px;min-height:52px;">
+                                Where ideas Meet Innovation — Let's Build Robots
+                            </p>
+                            <a href="mailto:sarinakasaiyan@gmail.com" class="btn-solid-theme" style="display:inline-block;margin-top:4px;">
+                                <i class="fas fa-pencil-alt"></i> Gmail
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ======== POST 1 : About Me ======== -->
+                <div class="post-card">
+                    <div style="display:flex;align-items:center;gap:12px;">
+                        <img src="images/sarinakasaiyan.jpg" alt="Avatar" class="avatar-sm">
+                        <div style="flex:1;">
+                            <span style="font-weight:600;font-size:16px;">About Me</span>
+                            <span class="w3-right w3-opacity" style="font-size:13px;">1 min</span>
+                        </div>
+                    </div>
+                    <hr class="hr-custom">
+                    <p style="font-size:15px;line-height:1.7;color:#1e2a3a;">
+                        ✔️ MBTI personality: ENTJ. I am currently a master's student in artificial intelligence from
+                        <a href="https://www.iau.ir/en" target="_blank" style="color:#1e2a3a;font-weight:500;border-bottom:1px solid #cbd5e1;">University of Tehran Shomal</a>,
+                        having completed my bachelor's degree in computer engineering. My specialty lies in robotics, and I work as a robotics instructor.
+                        Additionally, I am a skilled website designer and programmer. I possess strong expertise in content presentation and crisis management.
+                        Furthermore, I have experience as an internet sales expert within a company. I am also a trader, leveraging my analytical skills
+                        in the financial markets.
+                    </p>
+
+                    <!-- image + video side-by-side -->
+                    <div class="media-grid">
+                        <div class="media-item">
+                            <img src="images/RoboticBook.jpg" alt="Robotic Book">
+                        </div>
+                        <div class="media-item">
+                            <video controls>
+                                <source src="video/sarinakasaiyan2.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                    </div>
+
+                    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;">
+                        <button class="btn-outline-theme"><i class="fas fa-thumbs-up"></i> Like</button>
+                        <button class="btn-outline-theme"><i class="fas fa-comment"></i> Comment</button>
+                    </div>
+                </div>
+
+                <!-- ======== POST 2 : NLP ======== -->
+                <div class="post-card">
+                    <div style="display:flex;align-items:center;gap:12px;">
+                        <img src="images/sarinakasaiyan.jpg" alt="Avatar" class="avatar-sm">
+                        <div style="flex:1;">
+                            <span style="font-weight:600;font-size:16px;">Natural Language Processing NLP = NLU + NLG</span>
+                            <span class="w3-right w3-opacity" style="font-size:13px;">16 min</span>
+                        </div>
+                    </div>
+                    <hr class="hr-custom">
+                    <p style="font-size:15px;line-height:1.7;">
+                        You can download my code from GitHub:
+                        <a href="https://github.com/Sarinakasaiyan/GoogleTranslate/blob/Natural-Language-Processing-NLP-Tokenization/GoogleTranslateNLP.ipynb" target="_blank" style="font-weight:500;color:#1e2a3a;border-bottom:1px solid #cbd5e1;">
+                            <i class="fab fa-github"></i> GitHub
+                        </a>
+                    </p>
+
+                    <!-- video -->
+                    <div class="media-grid" style="margin-top:6px;">
+                        <div class="media-item">
+                            <video controls>
+                                <source src="video/sarinakasaiyan4.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                    </div>
+
+                    <div style="font-size:15px;line-height:1.8;margin-top:8px;">
+                        <p>
+                            I'm excited to share my research project on machine translation models with you! 🇩🇪🇫🇷
+                            <br><br>
+                            <strong>Google Translate</strong>
+                            <br><br>
+                            Recently, I conducted a comparative study between T5 and Marian models for translating from English to French and German.
+                            This project allowed me to delve deep into the field of natural language processing and evaluate translation quality
+                            using the METEOR metric.
+                            <br><br>
+                            <strong>Key project highlights:</strong>
+                            <br>
+                            - Implementation and comparison of T5 and Marian models<br>
+                            - Analysis of translation accuracy and execution time<br>
+                            - Utilization of NLTK and Transformers libraries for natural language processing tasks<br>
+                            - Gaining hands-on experience in tokenization and fine-tuning models
+                            <br><br>
+                            I would like to thank my supervisor, Nava Eslami, for her guidance and support throughout this project.
+                            Her expertise in natural language processing has been invaluable to my learning.
+                            <br><br>
+                            For more details about this research project, you can read the article I worked with on Medium:
+                            <a href="https://medium.com/@mleinbayarea/evaluating-machine-translation-models-with-t5-and-marian-52ad3651f1a8" target="_blank" style="font-weight:500;color:#1e2a3a;border-bottom:1px solid #cbd5e1;">
+                                medium.com
+                            </a>
+                            <br><br>
+                            I'm eagerly looking forward to continuing my exploration of the fascinating world of natural language processing and
+                            machine translation. If you're interested in collaboration or further discussion in this field, I'd be happy to connect with you!
+                            <br><br>
+                            <span style="color:#64748b;font-size:13px;">#NaturalLanguageProcessing #MachineLearning #TranslationTechnology #NLPResearch #AIinTranslation #DataScience #T5Model #MarianModel #NLTK #Transformers</span>
+                        </p>
+                    </div>
+
+                    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:6px;">
+                        <button class="btn-outline-theme"><i class="fas fa-thumbs-up"></i> Like</button>
+                        <button class="btn-outline-theme"><i class="fas fa-comment"></i> Comment</button>
+                    </div>
+                </div>
+
+                <!-- ======== POST 3 : Interview / Book ======== -->
+                <div class="post-card">
+                    <div style="display:flex;align-items:center;gap:12px;">
+                        <img src="images/sarinakasaiyan.jpg" alt="Avatar" class="avatar-sm">
+                        <div style="flex:1;">
+                            <span style="font-weight:600;font-size:16px;">Interview of inventions in Kamand event</span>
+                            <span class="w3-right w3-opacity" style="font-size:13px;">32 min</span>
+                        </div>
+                    </div>
+                    <hr class="hr-custom">
+                    <p style="font-size:15px;">
+                        You can buy my book from gisoom website:
+                        <a href="https://lnkd.in/ewj-G_-m" target="_blank" style="font-weight:500;color:#1e2a3a;border-bottom:1px solid #cbd5e1;">gisoom website</a>
+                    </p>
+
+                    <!-- two videos -->
+                    <div class="media-grid">
+                        <div class="media-item">
+                            <video controls>
+                                <source src="video/sarinakasaiyan3.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <div class="media-item">
+                            <video controls>
+                                <source src="video/sarinakasaiyan.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                    </div>
+
+                    <img src="images/Certificates.jpg" style="width:100%;border-radius:12px;margin:8px 0;" alt="Certificates">
+
+                    <div style="font-size:15px;line-height:1.8;">
+                        <p>
+                            <strong>"Line Follower Robot 🚜"</strong>
+                            <br><br>
+                            This book, written in the C programming language, helps you enhance your skills in mechanics, electronics, and programming.
+                            By studying this book, you can design and implement a line-following robot using an IR sensor and gain a solid understanding
+                            of the C programming language and various sensors, especially ultrasonic and IR sensors.
+                            <br><br>
+                            The book includes all the necessary instructions for building a robot capable of moving forward, backward, and turning.
+                            All movements and related programming are explained in detail. Additionally, by watching the educational videos, you will
+                            better understand the steps to build the robot.
+                            <br><br>
+                            This book is a great opportunity to assess your abilities and identify your interests in robotics and electronics. 💡🤖
+                        </p>
+                    </div>
+
+                    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:6px;">
+                        <button class="btn-outline-theme"><i class="fas fa-thumbs-up"></i> Like</button>
+                        <button class="btn-outline-theme"><i class="fas fa-comment"></i> Comment</button>
+                    </div>
+                </div>
+
+                <!-- ======== POST 4 : Poster event ======== -->
+                <div class="post-card">
+                    <div style="display:flex;align-items:center;gap:12px;">
+                        <img src="images/sarinakasaiyan.jpg" alt="Avatar" class="avatar-sm">
+                        <div style="flex:1;">
+                            <span style="font-weight:600;font-size:16px;">Poster event</span>
+                            <span class="w3-right w3-opacity" style="font-size:13px;">32 min</span>
+                        </div>
+                    </div>
+                    <hr class="hr-custom">
+
+                    <img src="images/sarina-.jpg" style="width:100%;border-radius:12px;margin:4px 0;" alt="Poster">
+                    <img src="images/sarina.jpg" style="width:100%;border-radius:12px;margin:4px 0;" alt="Poster 2">
+
+                    <div style="font-size:15px;line-height:1.8;">
+                        <p>
+                            <strong>"Line Follower Robot 🚜"</strong>
+                            <br><br>
+                            This book, written in the C programming language, helps you enhance your skills in mechanics, electronics, and programming.
+                            By studying this book, you can design and implement a line-following robot using an IR sensor and gain a solid understanding
+                            of the C programming language and various sensors, especially ultrasonic and IR sensors.
+                            <br><br>
+                            The book includes all the necessary instructions for building a robot capable of moving forward, backward, and turning.
+                            All movements and related programming are explained in detail. Additionally, by watching the educational videos, you will
+                            better understand the steps to build the robot.
+                            <br><br>
+                            This book is a great opportunity to assess your abilities and identify your interests in robotics and electronics. 💡🤖
+                        </p>
+                    </div>
+
+                    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:6px;">
+                        <button class="btn-outline-theme"><i class="fas fa-thumbs-up"></i> Like</button>
+                        <button class="btn-outline-theme"><i class="fas fa-comment"></i> Comment</button>
+                    </div>
+                </div>
+
+            </div> <!-- end middle column -->
+
+
+            <!-- ========================================================== -->
+            <!-- RIGHT COLUMN -->
+            <!-- ========================================================== -->
+            <div class="w3-col m2" style="padding-left:12px;">
+
+                <!-- research 1 -->
+                <div class="research-card">
+                    <p style="font-weight:600;font-size:14px;margin:0 0 6px 0;">My recent research</p>
+                    <img src="images/Planetary exploration with robot teams.png" alt="Planetary exploration" style="width:100%;border-radius:8px;">
+                    <p style="font-weight:600;font-size:14px;margin:10px 0 4px 0;">Planetary exploration with robot teams</p>
+                    <p style="font-size:13px;color:#64748b;margin:0 0 10px 0;">Friday 15:00</p>
+                    <a href="https://d1wqtxts1xzle7.cloudfront.net/98370215/St-Onge_20D_202019_2019351-libre.pdf?1675790135=&response-content-disposition=inline%3B+filename%3DPlanetary_Exploration_With_Robot_Teams_I.pdf&Expires=1733075154&Signature=hMu8F12F7JKdDjZepG0-lGA4mWWges-bjiWZA-9Kwyw0xBme-C5xO5hpBOdhwaepxlksrLVdh0UH4MhLH6i~lBCq9uF91AzndJUtq6Pb3lzmanbClfn9uJe3EaCXMxbttF1Xv9wBh20sC9t5DBEbplaK6SeJH-yD0zbVlAiVmvJiIs0vfS6JOHqaNP7UvEn5JPsUlELc-lf6VxpsflcsaiXfwHqXJinxKRZojELmE3zRSlDoSSCNokjBdzaojK5GGO1B1zEJ78nbX-5YSn-jSqkSxNtF3stz6JJbRok~H3VNJ4~gr9GZcMZ2vHm08zdYbDSvoa7JLSr7ZofuReIjMw__&Key-Pair-Id=APKAJLOHF5GGSLRBV4ZA" target="_blank" class="btn-download">
+                        <i class="fas fa-file-pdf"></i> Download article
+                    </a>
+                </div>
+
+                <!-- research 2 -->
+                <div class="research-card">
+                    <p style="font-weight:600;font-size:14px;margin:0 0 6px 0;">My recent research</p>
+                    <img src="images/Deep multi-task learning structure for segmentation and classification of supratentorial brain tumors in MR images.png" alt="Brain tumors" style="width:70%;border-radius:8px;">
+                    <p style="font-weight:600;font-size:13px;margin:10px 0 4px 0;line-height:1.4;">Deep MTL Structure for Segmentation and Classification of Supratentorial Brain Tumors in MR Images</p>
+                    <a href="https://pdf.sciencedirectassets.com/306126/1-s2.0-S2214751923X00048/1-s2.0-S2214751923002141/main.pdf?X-Amz-Security-Token=IQoJb3JpZ2luX2VjEAEaCXVzLWVhc3QtMSJGMEQCIBa2LiRb0XZsqh7V%2Bh7Y2hmnZCmZdtmBVelsMy%2BNwhfEAiBBgnVKEpyh4xcv5scX1dvQq6yEBwxcFaU9jWhs0Pg64Sq7BQiq%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F8BEAUaDDA1OTAwMzU0Njg2NSIMnTEpJDibs3Tj2BEeKo8FVs2GIo3aqTJajVxNKpO0U7shqOzqcTQMGfLZUVE%2BccL%2BR6v5hKMtZGh3ilVBdexKcLaQBUl%2BQe3uFb%2FNj7FIEr0de06n9COM0XXctnDZR8Mc1sZBin5IWQGgBmtkF59hkvOYNam7pwpaFA0zApvUSOn5hiNODRzjR31M9DN3co8lXNNmUHJ4%2FxFAV4WRrNno5cFmmD0rE6ZsXXWmjRr%2FveAFX%2BPpRdp7p3CRY0skRedqtjNxsML%2FAtMQXUrRDA3gHKnCKtkWSxXAasmDd6C%2FukQYV%2FCfiRUYcBani1YUEzar3xIPRO38TFpBPyWCIGTjsHoSor79tZiinaBKUeX4LIUsNQXmi4KV1T%2FgrVgXQ%2B6ex8o6eDbm2rz4wu5abSDRmGHvLhqWSOZjhlWLdCTKI5vrTOMcj2o8%2BIFCKJbVJGhBxQGx7qyc22MnbBxGZ3g5WgUW6969P0xf7C%2BNj7pitqvmkmFUYhUJXjTPfKukBB7Ihoi28RpUFmyN1OTwEtxrLpYa%2B37ObjJmSqXnbkCFfxK5O8W8zT2ysxa0WQZdN2JFJOwcRU3L4HoLoNF%2Fw7NrRfZ%2BuFM23jljTwhD4792iK6uPNt7aW9QHPFdgByXgF%2F%2BfrHHNFn1kB4a0X%2FVXv9A1PwPIMzaDt%2FHmOLnRB2VIEF2ZOsW0FXVMqnXnZgYMXLoIvNDxGqt3qVEdPI9WAHlzqWpzW7N1a%2BWpPOLAW3oQi3zIvE2sgaLv6ef8P0V4I1dOm85qFnzsT1U9E8oc7f%2B22NT2rJlU0EiUfPgh0FynY9LWhaTYtGy5h0pL2wZ7VQfsWp3jiFxHqkKSTKcvncW5bSqsCRowsN2XQ6Md0S2DOb%2FO1cpUbwaBvi1Y1m7MTDVnbK6BjqyAcvvv006yB3u48BD6yTRIkJxq%2BjQP%2FH0yaz0Z%2BgG%2F2miTRH6M0qTcp4gBh%2FghUl0dYrD%2FTxRJWcQXSmt5nn5vMnoM42Wf6es3NUvMnFGnMwz5X6xb7JbPQ9haJ9MWRpRcQUoGoWdvAgJWopr%2Fw6Wo70ztdBEACGDJelspIkT3GSBkMJFZtKY9NT41JIXKxeU7TeNSl0K1sJXH9CtmDJCxZcUSaCbnLj8Mu%2FSYn%2Bd75n7tDI%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20241201T171852Z&X-Amz-SignedHeaders=host&X-Amz-Expires=300&X-Amz-Credential=ASIAQ3PHCVTYUGLSJRB6%2F20241201%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=93cb452c0ff73326063cd93968de6582b5a4ed9615f98e71d03a70a1e1ce010b&hash=a36d960c079a2b715a82d0793d7d422e3055f406b253db95fb9467cbd9d21ff7&host=68042c943591013ac2b2430a89b270f6af2c76d8dfd086a07176afe7c76c2c61&pii=S2214751923002141&tid=spdf-b6d8c190-776b-4d25-bddd-c090a13ea27b&sid=f4fa44fc22e150450909d0b0b9064a231b8dgxrqb&type=client&tsoh=d3d3LnNjaWVuY2VkaXJlY3QuY29t&ua=131458060c540400520306&rr=8eb4bd2adf29a01d&cc=ir" target="_blank" class="btn-download">
+                        <i class="fas fa-file-pdf"></i> Download article
+                    </a>
+                    <div style="display:flex;gap:8px;margin-top:12px;justify-content:center;">
+                        <button class="w3-button w3-green" style="border-radius:40px;padding:4px 18px;font-weight:500;font-size:13px;"><i class="fas fa-check"></i> Accept</button>
+                        <button class="w3-button w3-red" style="border-radius:40px;padding:4px 18px;font-weight:500;font-size:13px;"><i class="fas fa-times"></i> Decline</button>
+                    </div>
+                </div>
+
+                <!-- robotic badge -->
+                <div class="research-card" style="background:#eef1f5;border-color:#dce1e9;">
+                    <p style="font-weight:600;font-size:16px;margin:0;">ROBOTIC</p>
+                </div>
+
+                <!-- robot icon -->
+                <div class="research-card" style="background:#fff;padding:28px 16px;">
+                    <i class="fas fa-robot" style="font-size:48px;color:#1e2a3a;"></i>
+                </div>
+
+            </div> <!-- end right column -->
+
+        </div> <!-- end row -->
+
+    </div> <!-- end container -->
+
+
+    <!-- ============================================================ -->
+    <!-- FOOTER -->
+    <!-- ============================================================ -->
+    <div class="footer-main">
+        <div class="w3-row-padding">
+
+            <div class="w3-third">
+                <h3>Web Develop</h3>
+                <p style="font-size:14px;line-height:1.7;">The sites I developed are active on the Internet</p>
+                <div style="display:flex;flex-wrap:wrap;gap:4px 10px;font-size:14px;">
+                    <a href="https://ai-lab-tnb.com" target="_blank">AI-LAB-TNB</a>
+                    <a href="https://www.metadaru.com" target="_blank">metadaru</a>
+                    <a href="https://kiyanet.ir" target="_blank">kiyanet</a>
+                    <a href="https://sangesarshop.ir" target="_blank">sangesarshop</a>
+                    <a href="https://keymode.com" target="_blank">keymode</a>
+                    <a href="https://yakhdanpamchal.com" target="_blank">yakhdanpamchal</a>
+                </div>
+            </div>
+
+            <div class="w3-third">
+                <h3>My recent work</h3>
+                <ul class="w3-ul w3-hoverable" style="padding-left:0;list-style:none;">
+                    <li style="display:flex;align-items:center;gap:12px;padding:8px 0;">
+                        <img src="images/AI LAB.png" style="width:44px;height:44px;object-fit:cover;border-radius:8px;" alt="AI Lab">
+                        <div>
+                            <span style="font-weight:500;color:#fff;display:block;">Artificial intelligence laboratory</span>
+                            <span style="font-size:13px;color:#cbd5e1;">Robotic, Web developer</span>
+                        </div>
+                    </li>
+                    <li style="display:flex;align-items:center;gap:12px;padding:8px 0;">
+                        <img src="images/NBML.png" style="width:44px;height:44px;object-fit:cover;border-radius:8px;" alt="NBML">
+                        <div>
+                            <span style="font-weight:500;color:#fff;display:block;">NBML</span>
+                            <span style="font-size:13px;color:#cbd5e1;">Researcher</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="w3-third">
+                <h3>My skills</h3>
+                <div style="display:flex;flex-wrap:wrap;gap:4px;">
+                    <span class="w3-tag">Artificial intelligence Specialist (AI)</span>
+                    <span class="w3-tag">Robotic</span>
+                    <span class="w3-tag">Web developer</span>
+                    <span class="w3-tag">Front-end</span>
+                    <span class="w3-tag">Back-end</span>
+                    <span class="w3-tag">Word Press</span>
+                    <span class="w3-tag">Search Engine Optimization (SEO)</span>
+                    <span class="w3-tag">Machine Learning (ML)</span>
+                    <span class="w3-tag">Deep Learning (DL)</span>
+                    <span class="w3-tag">Natural Language Processing (NLP)</span>
+                    <span class="w3-tag">Data Scientist</span>
+                    <span class="w3-tag">Software Engineer</span>
+                    <span class="w3-tag">Python programming</span>
+                    <span class="w3-tag">C programming</span>
+                </div>
+            </div>
+
         </div>
-      </div>
-      
+    </div>
+
+    <!-- bottom bar -->
+    <div style="background:#0f1a2b;padding:18px 24px;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;border-radius:0 0 20px 20px;">
+        <a href="#" class="w3-button w3-black" style="border-radius:40px;padding:8px 22px;font-weight:500;font-size:13px;">
+            <i class="fas fa-arrow-up w3-margin-right"></i>To the top
+        </a>
+        <span style="color:#cbd5e1;font-size:14px;">Brainstorm: Turn Ideas into Reality with Artificial Intelligence</span>
+    </div>
 
 
-
-
-
-
-     
-      
-      <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
-        <img src="images/sarinakasaiyan.jpg" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
-        <span class="w3-right w3-opacity">1 min</span>
-      <h4>About Me</h4><br>
-        <hr class="w3-clear">
-
-
-<p>✔️MBTI personality: ENTJ. I am currently a master's student in artificial intelligence from [University of Tehran Shomal] <a href="https://www.iau.ir/en" style="color: blue;">(https://www.iau.ir/en)</a>, having completed my bachelor's degree in computer engineering. My specialty lies in robotics, and I work as a robotics instructor. Additionally, I am a skilled website designer and programmer. I possess strong expertise in content presentation and crisis management. Furthermore, I have experience as an internet sales expert within a company. I am also a trader, leveraging my analytical skills in the financial markets.</p>
-
-</p>
-
-
-  <!DOCTYPE html>
-<html lang="fa">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Image and Video Side by Side</title>
-    <style>
-        .container {
-            display: flex; /* Use flexbox for layout */
-            justify-content: center; /* Center items horizontally */
-            align-items: center; /* Center items vertically */
-            margin: 20px; /* Add some margin around the container */
-        }
-
-        .item {
-            margin: 10px; /* Space between items */
-            flex: 1; /* Allow items to grow equally */
-            max-width: 400px; /* Set a maximum width for each item */
-        }
-
-        img, video {
-            width: 100%; /* Make image and video responsive */
-            height: auto; /* Maintain aspect ratio */
-        }
-
-        @media (max-width: 768px) {
-            .container {
-                flex-direction: column; /* Stack items vertically on small screens */
+    <!-- ============================================================ -->
+    <!-- SCRIPTS -->
+    <!-- ============================================================ -->
+    <script>
+        // Accordion
+        function myFunction(id) {
+            var x = document.getElementById(id);
+            if (x.className.indexOf("w3-show") == -1) {
+                x.className += " w3-show";
+                x.previousElementSibling.className += " w3-theme-d1";
+            } else {
+                x.className = x.className.replace("w3-show", "");
+                x.previousElementSibling.className =
+                    x.previousElementSibling.className.replace(" w3-theme-d1", "");
             }
         }
-    </style>
-</head>
-<body>
 
-<div class="container">
-    <div class="item">
-        <img src="images/RoboticBook.jpg" alt="Robotic Book">
-    </div>
-    <div class="item">
-        <video controls>
-            <source src="video/sarinakasaiyan2.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-    </div>
-</div>
+        // Toggle mobile menu
+        function openNav() {
+            var x = document.getElementById("navDemo");
+            if (x.className.indexOf("w3-show") == -1) {
+                x.className += " w3-show";
+            } else {
+                x.className = x.className.replace(" w3-show", "");
+            }
+        }
+    </script>
 
 </body>
 </html>
-
-
-
-
-       
-        <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>  Like</button>
-        <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i>  Comment</button>
-      </div>
-
-      <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
-        <img src="images/sarinakasaiyan.jpg" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
-        <span class="w3-right w3-opacity">16 min</span>
-
-
-       
-        <h4>Natural Language Processing NLP=NLU+NLG</h4><br>
-        <hr class="w3-clear">
-        <p></p>
-
-
-
-
-
-
-   <hr class="w3-clear">
-
-               <p>You can download my code from Github:<a href="https://github.com/Sarinakasaiyan/GoogleTranslate/blob/Natural-Language-Processing-NLP-Tokenization/GoogleTranslateNLP.ipynb" class="w3-bar-item w3-button w3-padding-large">Github</a>  
-
- </p>
-
-
-
-<!DOCTYPE html>
-<html lang="fa">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>دو ویدئو در کنار هم</title>
-    <style>
-        .container {
-            display: flex; /* استفاده از فلکس باکس برای چیدمان */
-            justify-content: center; /* مرکز کردن ویدئوها */
-            align-items: center; /* تراز کردن عمودی */
-            margin: 20px; /* حاشیه دور کانتینر */
-        }
-
-        .video-item {
-            margin: 10px; /* فاصله بین ویدئوها */
-            flex: 1; /* اجازه به ویدئوها برای رشد مساوی */
-            max-width: 400px; /* حداکثر عرض برای هر ویدئو */
-        }
-
-        video {
-            width: 100%; /* ویدئو به صورت پاسخگو باشد */
-            height: auto; /* حفظ نسبت ابعاد */
-        }
-
-        @media (max-width: 768px) {
-            .container {
-                flex-direction: column; /* چیدمان عمودی در صفحه‌های کوچک‌تر */
-            }
-        }
-    </style>
-</head>
-<body>
-
-<div class="container">
-    <div class="video-item">
-        <video controls>
-            <source src="video/sarinakasaiyan4.mp4" type="video/mp4">
-            مرورگر شما از تگ ویدئو پشتیبانی نمی‌کند.
-        </video>
-    </div>
-
-</div>
-
-<p>
-
- I'm excited to share my research project on machine translation models with you! 🇩🇪🇫🇷
- <br>
-</br>
-
-Google Translate
-
-<br>
-</br>
-Recently, I conducted a comparative study between T5 and Marian models for translating from English to French and German. This project allowed me to delve deep into the field of natural language processing and evaluate translation quality using the METEOR metric.
-<br>
-</br>
-Key project highlights:
-<br>
-</br>
-- Implementation and comparison of T5 and Marian models
-- Analysis of translation accuracy and execution time
-- Utilization of NLTK and Transformers libraries for natural language processing tasks
-- Gaining hands-on experience in tokenization and fine-tuning models
-<br>
-</br>
-I would like to thank my supervisor, Nava Eslami, for her guidance and support throughout this project. Her expertise in natural language processing has been invaluable to my learning.
-<br>
-</br>
-For more details about this research project, you can read the article I worked with on Medium:
-https://medium.com/@mleinbayarea/evaluating-machine-translation-models-with-t5-and-marian-52ad3651f1a8
-<br>
-</br>
-I'm eagerly looking forward to continuing my exploration of the fascinating world of natural language processing and machine translation. If you're interested in collaboration or further discussion in this field, I'd be happy to connect with you!
-<br>
-</br>
-#NaturalLanguageProcessing #MachineLearning #TranslationTechnology #NLPResearch #AIinTranslation #DataScience #T5Model #MarianModel #NLTK #Transformers
-
-
-</p>
-
- 
-</body>
-</html>
-
-
-
-
-       
-
-       
-       
-        <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>  Like</button>
-        <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i>  Comment</button>
-      </div>
-
-
-
-     
- 
-
-
-
-
-     
-
-      <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
-        <img src="images/sarinakasaiyan.jpg" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
-        <span class="w3-right w3-opacity">32 min</span>
-        <h4>Interview of inventions in Kamand event</h4><br>
-        <hr class="w3-clear">
-        <p>You can buy my book from gisoom website:<a href="https://lnkd.in/ewj-G_-m" class="w3-bar-item w3-button w3-padding-large">gisoom website</a>  
- </p>
-
-
-
-<!DOCTYPE html>
-<html lang="fa">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>دو ویدئو در کنار هم</title>
-    <style>
-        .container {
-            display: flex; /* استفاده از فلکس باکس برای چیدمان */
-            justify-content: center; /* مرکز کردن ویدئوها */
-            align-items: center; /* تراز کردن عمودی */
-            margin: 20px; /* حاشیه دور کانتینر */
-        }
-
-        .video-item {
-            margin: 10px; /* فاصله بین ویدئوها */
-            flex: 1; /* اجازه به ویدئوها برای رشد مساوی */
-            max-width: 400px; /* حداکثر عرض برای هر ویدئو */
-        }
-
-        video {
-            width: 100%; /* ویدئو به صورت پاسخگو باشد */
-            height: auto; /* حفظ نسبت ابعاد */
-        }
-
-        @media (max-width: 768px) {
-            .container {
-                flex-direction: column; /* چیدمان عمودی در صفحه‌های کوچک‌تر */
-            }
-        }
-    </style>
-</head>
-<body>
-
-<div class="container">
-    <div class="video-item">
-        <video controls>
-            <source src="video/sarinakasaiyan3.mp4" type="video/mp4">
-            مرورگر شما از تگ ویدئو پشتیبانی نمی‌کند.
-        </video>
-    </div>
-    <div class="video-item">
-        <video controls>
-            <source src="video/sarinakasaiyan.mp4" type="video/mp4">
-            مرورگر شما از تگ ویدئو پشتیبانی نمی‌کند.
-        </video>
-    </div>
-</div>
-
-</body>
-</html>
-
-
-
-
-
-
-       
-        <img src="images/Certificates.jpg" style="width:100%" class="w3-margin-bottom">
-<p>
- "Line Follower Robot🚜" 
-
-This book, written in the C programming language, helps you enhance your skills in mechanics, electronics, and programming. By studying this book, you can design and implement a line-following robot using an IR sensor and gain a solid understanding of the C programming language and various sensors, especially ultrasonic and IR sensors.
-
-The book includes all the necessary instructions for building a robot capable of moving forward, backward, and turning. All movements and related programming are explained in detail. Additionally, by watching the educational videos, you will better understand the steps to build the robot.
-
-This book is a great opportunity to assess your abilities and identify your interests in robotics and electronics. 💡🤖
-</p> 
-       <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>  Like</button> 
-        <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i>  Comment</button> 
-      </div> 
-
-
-
-
-
-
-
-
-
-
-
-     
-     
-
-      <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
-        <img src="images/sarinakasaiyan.jpg" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
-        <span class="w3-right w3-opacity">32 min</span>
-        <h4>poster event</h4><br>
-        <hr class="w3-clear">
- </p>
-
-
-
-
-
-
-
-
-
-               <img src="images/sarina-.jpg" style="width:100%" class="w3-margin-bottom">
-
-        <img src="images/sarina.jpg" style="width:100%" class="w3-margin-bottom">
-
-       <p>
- "Line Follower Robot🚜" 
-
-This book, written in the C programming language, helps you enhance your skills in mechanics, electronics, and programming. By studying this book, you can design and implement a line-following robot using an IR sensor and gain a solid understanding of the C programming language and various sensors, especially ultrasonic and IR sensors.
-
-The book includes all the necessary instructions for building a robot capable of moving forward, backward, and turning. All movements and related programming are explained in detail. Additionally, by watching the educational videos, you will better understand the steps to build the robot.
-
-This book is a great opportunity to assess your abilities and identify your interests in robotics and electronics. 💡🤖
-</p> 
-       <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>  Like</button> 
-        <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i>  Comment</button> 
-      </div> 
-      
-
-
-
-
-
-
-
-
-
-
-
-
-     
-    <!-- End Middle Column -->
-    </div>
-
-
-
-
-
-
-
-   
-    <!-- Right Column -->
-    <div class="w3-col m2">
-      <div class="w3-card w3-round w3-white w3-center">
-        <div class="w3-container">
-          <p>My recent research</p>
-          <img src="images/Planetary exploration with robot teams.png" alt="Forest" style="width:100%;">
-          <p><strong>Planetary exploration 
- with robot teams 
-</strong></p>
-          <p>Friday 15:00</p>
-          <p><a href="https://d1wqtxts1xzle7.cloudfront.net/98370215/St-Onge_20D_202019_2019351-libre.pdf?1675790135=&response-content-disposition=inline%3B+filename%3DPlanetary_Exploration_With_Robot_Teams_I.pdf&Expires=1733075154&Signature=hMu8F12F7JKdDjZepG0-lGA4mWWges-bjiWZA-9Kwyw0xBme-C5xO5hpBOdhwaepxlksrLVdh0UH4MhLH6i~lBCq9uF91AzndJUtq6Pb3lzmanbClfn9uJe3EaCXMxbttF1Xv9wBh20sC9t5DBEbplaK6SeJH-yD0zbVlAiVmvJiIs0vfS6JOHqaNP7UvEn5JPsUlELc-lf6VxpsflcsaiXfwHqXJinxKRZojELmE3zRSlDoSSCNokjBdzaojK5GGO1B1zEJ78nbX-5YSn-jSqkSxNtF3stz6JJbRok~H3VNJ4~gr9GZcMZ2vHm08zdYbDSvoa7JLSr7ZofuReIjMw__&Key-Pair-Id=APKAJLOHF5GGSLRBV4ZA"button class="w3-button w3-block w3-theme-l4">Download the article</button></p></a>
-        </div>
-      </div>
-      <br>
-      
-      <div class="w3-card w3-round w3-white w3-center">
-        <div class="w3-container">
-          <p>My recent research</p>
-          <img src="images/Deep multi-task learning structure for segmentation and classification of supratentorial brain tumors in MR images.png" alt="Avatar" style="width:50%"><br>
-          <h5>Deep MTL Structure for Segmentation and Classification of Supratentorial Brain Tumors in MR Images</h5>
-                                <p><a href="https://pdf.sciencedirectassets.com/306126/1-s2.0-S2214751923X00048/1-s2.0-S2214751923002141/main.pdf?X-Amz-Security-Token=IQoJb3JpZ2luX2VjEAEaCXVzLWVhc3QtMSJGMEQCIBa2LiRb0XZsqh7V%2Bh7Y2hmnZCmZdtmBVelsMy%2BNwhfEAiBBgnVKEpyh4xcv5scX1dvQq6yEBwxcFaU9jWhs0Pg64Sq7BQiq%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F8BEAUaDDA1OTAwMzU0Njg2NSIMnTEpJDibs3Tj2BEeKo8FVs2GIo3aqTJajVxNKpO0U7shqOzqcTQMGfLZUVE%2BccL%2BR6v5hKMtZGh3ilVBdexKcLaQBUl%2BQe3uFb%2FNj7FIEr0de06n9COM0XXctnDZR8Mc1sZBin5IWQGgBmtkF59hkvOYNam7pwpaFA0zApvUSOn5hiNODRzjR31M9DN3co8lXNNmUHJ4%2FxFAV4WRrNno5cFmmD0rE6ZsXXWmjRr%2FveAFX%2BPpRdp7p3CRY0skRedqtjNxsML%2FAtMQXUrRDA3gHKnCKtkWSxXAasmDd6C%2FukQYV%2FCfiRUYcBani1YUEzar3xIPRO38TFpBPyWCIGTjsHoSor79tZiinaBKUeX4LIUsNQXmi4KV1T%2FgrVgXQ%2B6ex8o6eDbm2rz4wu5abSDRmGHvLhqWSOZjhlWLdCTKI5vrTOMcj2o8%2BIFCKJbVJGhBxQGx7qyc22MnbBxGZ3g5WgUW6969P0xf7C%2BNj7pitqvmkmFUYhUJXjTPfKukBB7Ihoi28RpUFmyN1OTwEtxrLpYa%2B37ObjJmSqXnbkCFfxK5O8W8zT2ysxa0WQZdN2JFJOwcRU3L4HoLoNF%2Fw7NrRfZ%2BuFM23jljTwhD4792iK6uPNt7aW9QHPFdgByXgF%2F%2BfrHHNFn1kB4a0X%2FVXv9A1PwPIMzaDt%2FHmOLnRB2VIEF2ZOsW0FXVMqnXnZgYMXLoIvNDxGqt3qVEdPI9WAHlzqWpzW7N1a%2BWpPOLAW3oQi3zIvE2sgaLv6ef8P0V4I1dOm85qFnzsT1U9E8oc7f%2B22NT2rJlU0EiUfPgh0FynY9LWhaTYtGy5h0pL2wZ7VQfsWp3jiFxHqkKSTKcvncW5bSqsCRowsN2XQ6Md0S2DOb%2FO1cpUbwaBvi1Y1m7MTDVnbK6BjqyAcvvv006yB3u48BD6yTRIkJxq%2BjQP%2FH0yaz0Z%2BgG%2F2miTRH6M0qTcp4gBh%2FghUl0dYrD%2FTxRJWcQXSmt5nn5vMnoM42Wf6es3NUvMnFGnMwz5X6xb7JbPQ9haJ9MWRpRcQUoGoWdvAgJWopr%2Fw6Wo70ztdBEACGDJelspIkT3GSBkMJFZtKY9NT41JIXKxeU7TeNSl0K1sJXH9CtmDJCxZcUSaCbnLj8Mu%2FSYn%2Bd75n7tDI%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20241201T171852Z&X-Amz-SignedHeaders=host&X-Amz-Expires=300&X-Amz-Credential=ASIAQ3PHCVTYUGLSJRB6%2F20241201%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=93cb452c0ff73326063cd93968de6582b5a4ed9615f98e71d03a70a1e1ce010b&hash=a36d960c079a2b715a82d0793d7d422e3055f406b253db95fb9467cbd9d21ff7&host=68042c943591013ac2b2430a89b270f6af2c76d8dfd086a07176afe7c76c2c61&pii=S2214751923002141&tid=spdf-b6d8c190-776b-4d25-bddd-c090a13ea27b&sid=f4fa44fc22e150450909d0b0b9064a231b8dgxrqb&type=client&tsoh=d3d3LnNjaWVuY2VkaXJlY3QuY29t&ua=131458060c540400520306&rr=8eb4bd2adf29a01d&cc=ir"button class="w3-button w3-block w3-theme-l4">Download the article</button></p></a>
-
-          <div class="w3-row w3-opacity">
-            <div class="w3-half">
-                         <button class="w3-button w3-block w3-green w3-section" title="Accept"><i class="fa fa-check"></i></button>
-            </div>
-            <div class="w3-half">
-              <button class="w3-button w3-block w3-red w3-section" title="Decline"><i class="fa fa-remove"></i></button>
-          
-            </div>
-          
-            </div>
-          </div>
-        </div>
-      <br>
-      
-      <div class="w3-card w3-round w3-white w3-padding-16 w3-center">
-        <p>ROBOTIC</p>
-      </div>
-      <br>
-      
-      <div class="w3-card w3-round w3-white w3-padding-32 w3-center">
-<p><i class="fa fa-robot w3-xxlarge"></i></p>
-      </div>
-      
-    <!-- End Right Column -->
-    </div>
-    
-  <!-- End Grid -->
-  </div>
-  
-<!-- End Page Container -->
-</div>
-<br>
-<center>
-
-
-  
-  <!-- Footer -->
-  <footer class="w3-row-padding w3-padding-32">
-    <div class="w3-third">
-      <h3>Web Develope</h3>
-      <p>The sites I developed are active on the Internet
-</p>
-<p>
-
- <a href="https://ai-lab-tnb.com" class="w3-bar-item w3-button w3-padding-large">AI-LAB-TNB</a> 
-</p>
-     <p>
-       <a href=" https://www.metadaru.com" class="w3-bar-item w3-button w3-padding-large">metadaru</a> 
-
-
-      </p>
-     <p>
-       <a href=" https://kiyanet.ir" class="w3-bar-item w3-button w3-padding-large">kiyanet</a> 
-      </p>
-     <p>
-             <a href=" https://sangesarshop.ir" class="w3-bar-item w3-button w3-padding-large">sangesarshop</a> 
-
-      </p>
-     <p>
-                   <a href=" https://keymode.com " class="w3-bar-item w3-button w3-padding-large">keymode</a> 
-
- 
-</p>
-
-     <p>
-                   <a href=" https://yakhdanpamchal.com " class="w3-bar-item w3-button w3-padding-large">yakhdanpamchal</a> 
-
-      
-     </p>
-    </div>
-  
-    <div class="w3-third">
-      <h3>My recent work</h3>
-      <ul class="w3-ul w3-hoverable">
-        <li class="w3-padding-16">
-          <img src="images/AI LAB.png" class="w3-left w3-margin-right" style="width:50px">
-          <span class="w3-large">Artificial intelligence laboratory</span><br>
-          <span>Robotic,Web developer</span>
-        </li>
-        <li class="w3-padding-16">
-          <img src="images/NBML.png" class="w3-left w3-margin-right" style="width:50px">
-          <span class="w3-large">NBML</span><br>
-          <span>Researcher</span>
-        </li> 
-      </ul>
-    </div>
-
-    <div class="w3-third w3-serif">
-      <h3>My skills</h3>
-      <p>
-        <span class="w3-tag w3-black w3-margin-bottom">Artificial intelligence Specialist (AI) </span> <span class="w3-tag w3-dark-grey w3-small w3-margin-bottom">Robotic</span> <span class="w3-tag w3-dark-grey w3-small w3-margin-bottom">Web developer</span>
-        <span class="w3-tag w3-dark-grey w3-small w3-margin-bottom">Front-end</span> <span class="w3-tag w3-dark-grey w3-small w3-margin-bottom">Back-end</span> <span class="w3-tag w3-dark-grey w3-small w3-margin-bottom">Word Press</span>
-        <span class="w3-tag w3-dark-grey w3-small w3-margin-bottom">Search Engine Optimization (SEO)</span> <span class="w3-tag w3-dark-grey w3-small w3-margin-bottom">Machine Learning (ML)</span> <span class="w3-tag w3-dark-grey w3-small w3-margin-bottom">Deep Learning (DL)</span>
-        <span class="w3-tag w3-dark-grey w3-small w3-margin-bottom">Natural Language Processing (NLP)</span> <span class="w3-tag w3-dark-grey w3-small w3-margin-bottom">Data Scientist</span> <span class="w3-tag w3-dark-grey w3-small w3-margin-bottom"> Software Engineer</span>
-        <span class="w3-tag w3-dark-grey w3-small w3-margin-bottom">python programming</span> <span class="w3-tag w3-dark-grey w3-small w3-margin-bottom">C programming</span>
-      </p>
-    </div>
-  </footer>
-
-
-
-
-
-<!-- Footer -->
-<footer class="w3-container w3-dark-grey" style="padding:32px">
-  <a href="#" class="w3-button w3-black w3-padding-large w3-margin-bottom"><i class="fa fa-arrow-up w3-margin-right"></i>To the top</a>
-  <p> Brainstorm: Turn Ideas into Reality with Artificial Intelligence</p>
-</footer>
-
-
-
-
- 
-
- 
-<script>
-// Accordion
-function myFunction(id) {
-  var x = document.getElementById(id);
-  if (x.className.indexOf("w3-show") == -1) {
-    x.className += " w3-show";
-    x.previousElementSibling.className += " w3-theme-d1";
-  } else { 
-    x.className = x.className.replace("w3-show", "");
-    x.previousElementSibling.className = 
-    x.previousElementSibling.className.replace(" w3-theme-d1", "");
-  }
-}
-
-// Used to toggle the menu on smaller screens when clicking on the menu button
-function openNav() {
-  var x = document.getElementById("navDemo");
-  if (x.className.indexOf("w3-show") == -1) {
-    x.className += " w3-show";
-  } else { 
-    x.className = x.className.replace(" w3-show", "");
-  }
-}
-</script>
-
-</body>
-</html> 
