@@ -1,300 +1,596 @@
 <!DOCTYPE html>
-<html>
+<html lang="fa">
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-* {
-  box-sizing: border-box;
-}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Projects — Sarina Kasaiyan</title>
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        /* ========== RESET & BASE ========== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: #0A0A0A;
+            color: #E8EDF2;
+            padding: 24px;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #121212;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #333;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #4F46E5;
+        }
 
-body {
-  background-color: #f1f1f1;
-  padding: 20px;
-  font-family: Arial;
-}
+        /* ========== VARIABLES ========== */
+        :root {
+            --bg-deep: #0A0A0A;
+            --bg-card: #141414;
+            --accent: #818CF8;
+            --accent-hard: #4F46E5;
+            --text-primary: #F1F5F9;
+            --text-secondary: #94A3B8;
+            --text-muted: #64748B;
+        }
 
-/* Center website */
-.main {
-  max-width: 1000px;
-  margin: auto;
-}
+        /* ========== MAIN CONTAINER ========== */
+        .main {
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+        }
 
-h1 {
-  font-size: 50px;
-  word-break: break-all;
-}
+        /* ========== HEADER ========== */
+        .header-section {
+            margin-bottom: 40px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            padding-bottom: 24px;
+        }
+        .header-section h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            background: linear-gradient(135deg, #FFFFFF 0%, #818CF8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 4px;
+        }
+        .header-section .sub {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            font-weight: 400;
+        }
+        .header-section .sub i {
+            color: var(--accent);
+            margin-right: 6px;
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-secondary);
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: 0.2s;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            padding: 6px 18px;
+            border-radius: 60px;
+            background: rgba(255, 255, 255, 0.02);
+        }
+        .back-link:hover {
+            color: #fff;
+            border-color: var(--accent);
+            background: rgba(255, 255, 255, 0.04);
+        }
+        .back-link i {
+            font-size: 0.8rem;
+        }
 
-.row {
-  margin: 10px -16px;
-}
+        /* ========== FILTER BUTTONS ========== */
+        .filter-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 32px;
+        }
+        .filter-btn {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 60px;
+            padding: 8px 22px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.25s ease;
+            letter-spacing: 0.3px;
+        }
+        .filter-btn:hover {
+            background: rgba(255, 255, 255, 0.06);
+            border-color: var(--accent);
+            color: #fff;
+            transform: translateY(-2px);
+        }
+        .filter-btn.active {
+            background: var(--accent-hard);
+            border-color: var(--accent-hard);
+            color: #fff;
+            box-shadow: 0 8px 24px rgba(79, 70, 229, 0.25);
+        }
 
-/* Add padding BETWEEN each column */
-.row,
-.row > .column {
-  padding: 8px;
-}
+        /* ========== GRID ========== */
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            margin: -12px;
+        }
+        .column {
+            flex: 0 0 33.333%;
+            max-width: 33.333%;
+            padding: 12px;
+            display: none;
+            animation: fadeUp 0.4s ease forwards;
+        }
+        .column.show {
+            display: block;
+        }
 
-/* Create three equal columns that floats next to each other */
-.column {
-  float: left;
-  width: 33.33%;
-  display: none; /* Hide all elements by default */
-}
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(24px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
-/* Clear floats after rows */ 
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
+        /* ========== PROJECT CARD ========== */
+        .project-card {
+            background: rgba(20, 20, 20, 0.7);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            border-radius: 20px;
+            padding: 14px;
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+        }
+        .project-card:hover {
+            border-color: rgba(129, 140, 248, 0.2);
+            transform: translateY(-6px);
+            box-shadow: 0 20px 60px -10px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(129, 140, 248, 0.05);
+            background: rgba(26, 26, 26, 0.8);
+        }
+        .project-card .thumb {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 16/10;
+            object-fit: cover;
+            border-radius: 12px;
+            display: block;
+            border: 1px solid rgba(255, 255, 255, 0.02);
+            background: #1A1A1A;
+        }
+        .project-card .badge {
+            display: inline-block;
+            background: rgba(129, 140, 248, 0.12);
+            color: var(--accent);
+            font-size: 0.6rem;
+            font-weight: 600;
+            padding: 2px 12px;
+            border-radius: 40px;
+            margin-top: 12px;
+            letter-spacing: 0.5px;
+            border: 1px solid rgba(129, 140, 248, 0.06);
+            align-self: flex-start;
+        }
+        .project-card h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin: 8px 0 4px 0;
+        }
+        .project-card p {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin: 0;
+            flex: 1;
+        }
+        .project-card .tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+            margin-top: 10px;
+        }
+        .project-card .tech span {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            border-radius: 40px;
+            padding: 2px 12px;
+            font-size: 0.6rem;
+            font-weight: 500;
+            color: var(--text-muted);
+        }
 
-/* Content */
-.content {
-  background-color: white;
-  padding: 10px;
-}
+        /* ========== MODAL ========== */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            animation: modalFade 0.25s ease;
+            padding: 20px;
+        }
+        @keyframes modalFade {
+            from {
+                opacity: 0;
+                transform: scale(0.96);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        .modal-content {
+            margin: auto;
+            display: block;
+            max-width: 90%;
+            max-height: 85vh;
+            border-radius: 16px;
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            object-fit: contain;
+        }
+        #caption {
+            margin: 16px auto 0 auto;
+            display: block;
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            font-weight: 400;
+            max-width: 80%;
+        }
+        .close {
+            position: absolute;
+            top: 24px;
+            right: 32px;
+            color: #fff;
+            font-size: 44px;
+            font-weight: 300;
+            transition: 0.25s;
+            cursor: pointer;
+            opacity: 0.6;
+            line-height: 1;
+        }
+        .close:hover {
+            opacity: 1;
+            transform: rotate(90deg);
+        }
 
-/* The "show" class is added to the filtered elements */
-.show {
-  display: block;
-}
-
-/* Style the buttons */
-.btn {
-  border: none;
-  outline: none;
-  padding: 12px 16px;
-  background-color: white;
-  cursor: pointer;
-}
-
-.btn:hover {
-  background-color: #ddd;
-}
-
-.btn.active {
-  background-color: #666;
-  color: white;
-}
-
-/* The Modal (background) */
-.modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  padding-top: 100px; /* Location of the box */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
-}
-
-/* Modal Content (image) */
-.modal-content {
-  margin: auto;
-  display: block;
-  width: auto; /* Adjust to fit content */
-}
-
-/* Caption of Modal Image */
-#caption {
-    margin:auto;
-    display:block;
-    text-align:center;
-    color:#ccc;
-}
-
-/* The Close Button */
-.close {
-   position:absolute;
-   top:15px;
-   right:35px;
-   color:#f1f1f1;
-   font-size:40px;
-   font-weight:bold;
-   transition:.3s;
-}
-
-.close:hover,
-.close:focus {
-   color:#bbb;
-   text-decoration:none;
-   cursor:pointer;
-}
-</style>
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 992px) {
+            .column {
+                flex: 0 0 50%;
+                max-width: 50%;
+            }
+        }
+        @media (max-width: 600px) {
+            body {
+                padding: 12px;
+            }
+            .column {
+                flex: 0 0 100%;
+                max-width: 100%;
+            }
+            .header-section h1 {
+                font-size: 2rem;
+            }
+            .filter-btn {
+                font-size: 0.75rem;
+                padding: 6px 14px;
+            }
+            .modal-content {
+                max-width: 98%;
+                max-height: 80vh;
+            }
+            .close {
+                top: 12px;
+                right: 16px;
+                font-size: 32px;
+            }
+        }
+    </style>
 </head>
 <body>
 
-<!-- MAIN (Center website) -->
 <div class="main">
 
-<h1>MYLOGO.COM</h1>
-<hr>
-
-<h2>PORTFOLIO</h2>
-
-<div id="myBtnContainer">
-    <button class="btn active" onclick="filterSelection('all')"> Show all</button>
-    <button class="btn" onclick="filterSelection('nature')"> Nature</button>
-    <button class="btn" onclick="filterSelection('cars')"> Cars</button>
-    <button class="btn" onclick="filterSelection('people')"> People</button>
-</div>
-
-<!-- Portfolio Gallery Grid -->
-<div class="row">
-    <div class="column nature">
-        <div class="content">
-            <img src="Certificates/Certificatesunesco1.png" alt="Mountains" style="width:100%" onclick="openModal(this)">
-            <h4>Mountains</h4>
-            <p>Lorem ipsum dolor..</p>
-        </div>
-    </div>
-    <div class="column nature">
-        <div class="content">
-            <img src="/w3images/lights.jpg" alt="Lights" style="width:100%" onclick="openModal(this)">
-            <h4>Lights</h4>
-            <p>Lorem ipsum dolor..</p>
-        </div>
-    </div>
-    <div class="column nature">
-        <div class="content">
-            <img src="/w3images/nature.jpg" alt="Nature" style="width:100%" onclick="openModal(this)">
-            <h4>Forest</h4>
-            <p>Lorem ipsum dolor..</p>
-        </div>
+    <!-- ====== HEADER ====== -->
+    <div class="header-section">
+        <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Profile</a>
+        <h1>🚀 My Projects</h1>
+        <p class="sub"><i class="fas fa-code"></i> A showcase of my work in AI, Robotics & Web Development</p>
     </div>
 
-    <div class="column cars">
-        <div class="content">
-            <img src="/w3images/cars1.jpg" alt="Car" style="width:100%" onclick="openModal(this)">
-            <h4>Retro</h4>
-            <p>Lorem ipsum dolor..</p>
-        </div>
-    </div>
-    <div class="column cars">
-        <div class="content">
-            <img src="/w3images/cars2.jpg" alt="Car" style="width:100%" onclick="openModal(this)">
-            <h4>Fast</h4>
-            <p>Lorem ipsum dolor..</p>
-        </div>
-    </div>
-    <div class="column cars">
-        <div class="content">
-            <img src="/w3images/cars3.jpg" alt="Car" style="width:100%" onclick="openModal(this)">
-            <h4>Classic</h4>
-            <p>Lorem ipsum dolor..</p>
-        </div>
+    <!-- ====== FILTER BUTTONS ====== -->
+    <div class="filter-container" id="myBtnContainer">
+        <button class="filter-btn active" onclick="filterSelection('all')"> Show all</button>
+        <button class="filter-btn" onclick="filterSelection('web')"> Web</button>
+        <button class="filter-btn" onclick="filterSelection('ai')"> AI</button>
+        <button class="filter-btn" onclick="filterSelection('robotics')"> Robotics</button>
     </div>
 
-    <div class="column people">
-        <div class="content">
-            <img src="/w3images/people1.jpg" alt="Car" style="width:100%" onclick="openModal(this)">
-            <h4>Girl</h4>
-            <p>Lorem ipsum dolor..</p>
+    <!-- ====== PROJECT GRID ====== -->
+    <div class="row" id="gridRow">
+
+        <!-- ====== پروژه‌های وب ====== -->
+        <div class="column web">
+            <div class="project-card" onclick="openModal(this.querySelector('.thumb'))">
+                <img class="thumb" src="Projects/project1.jpg" alt="AI Lab Website" onerror="this.src='https://via.placeholder.com/400x250/1a1a1a/818CF8?text=AI+Lab'">
+                <span class="badge">Web Development</span>
+                <h4>AI Laboratory Website</h4>
+                <p>Full-stack platform for AI research lab with dashboard, user auth, and real-time data visualization.</p>
+                <div class="tech">
+                    <span>React</span>
+                    <span>Django</span>
+                    <span>PostgreSQL</span>
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="column people">
-        <div class="content">
-            <img src="/w3images/people2.jpg" alt="Car" style="width:100%" onclick="openModal(this)">
-            <h4>Man</h4>
-            <p>Lorem ipsum dolor..</p>
+
+        <div class="column web">
+            <div class="project-card" onclick="openModal(this.querySelector('.thumb'))">
+                <img class="thumb" src="Projects/project2.jpg" alt="Metadaru" onerror="this.src='https://via.placeholder.com/400x250/1a1a1a/818CF8?text=Metadaru'">
+                <span class="badge">Web Development</span>
+                <h4>Metadaru E-commerce</h4>
+                <p>Modern e-commerce platform with advanced search, payment gateway, and admin panel.</p>
+                <div class="tech">
+                    <span>Next.js</span>
+                    <span>Node.js</span>
+                    <span>MongoDB</span>
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="column people">
-        <div class="content">
-            <img src="/w3images/people3.jpg" alt="Car" style="width:100%" onclick="openModal(this)">
-            <h4>Woman</h4>
-            <p>Lorem ipsum dolor..</p>
+
+        <div class="column web">
+            <div class="project-card" onclick="openModal(this.querySelector('.thumb'))">
+                <img class="thumb" src="Projects/project3.jpg" alt="Kiyanet" onerror="this.src='https://via.placeholder.com/400x250/1a1a1a/818CF8?text=Kiyanet'">
+                <span class="badge">Web Development</span>
+                <h4>Kiyanet Corporate</h4>
+                <p>Corporate website for a tech company with multi-language support and dynamic content.</p>
+                <div class="tech">
+                    <span>WordPress</span>
+                    <span>PHP</span>
+                    <span>SEO</span>
+                </div>
+            </div>
         </div>
+
+        <!-- ====== پروژه‌های هوش مصنوعی ====== -->
+        <div class="column ai">
+            <div class="project-card" onclick="openModal(this.querySelector('.thumb'))">
+                <img class="thumb" src="Projects/project4.jpg" alt="NLP Translation" onerror="this.src='https://via.placeholder.com/400x250/1a1a1a/818CF8?text=NLP'">
+                <span class="badge">Artificial Intelligence</span>
+                <h4>NLP Machine Translation</h4>
+                <p>Comparative study of T5 vs Marian models for English → French/German translation using METEOR metric.</p>
+                <div class="tech">
+                    <span>Python</span>
+                    <span>Transformers</span>
+                    <span>NLTK</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="column ai">
+            <div class="project-card" onclick="openModal(this.querySelector('.thumb'))">
+                <img class="thumb" src="Projects/project5.jpg" alt="Brain Tumor Segmentation" onerror="this.src='https://via.placeholder.com/400x250/1a1a1a/818CF8?text=Brain+MRI'">
+                <span class="badge">Artificial Intelligence</span>
+                <h4>Brain Tumor Segmentation</h4>
+                <p>Deep multi-task learning for segmentation and classification of supratentorial brain tumors in MR images.</p>
+                <div class="tech">
+                    <span>PyTorch</span>
+                    <span>U-Net</span>
+                    <span>Medical Imaging</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="column ai">
+            <div class="project-card" onclick="openModal(this.querySelector('.thumb'))">
+                <img class="thumb" src="Projects/project6.jpg" alt="RL Robot" onerror="this.src='https://via.placeholder.com/400x250/1a1a1a/818CF8?text=RL'">
+                <span class="badge">Artificial Intelligence</span>
+                <h4>Reinforcement Learning for Robotics</h4>
+                <p>Training a robotic arm using deep reinforcement learning for pick-and-place tasks in simulation.</p>
+                <div class="tech">
+                    <span>TensorFlow</span>
+                    <span>OpenAI Gym</span>
+                    <span>ROS</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ====== پروژه‌های رباتیک ====== -->
+        <div class="column robotics">
+            <div class="project-card" onclick="openModal(this.querySelector('.thumb'))">
+                <img class="thumb" src="Projects/project7.jpg" alt="Line Follower Robot" onerror="this.src='https://via.placeholder.com/400x250/1a1a1a/818CF8?text=Line+Follower'">
+                <span class="badge">Robotics</span>
+                <h4>Line Follower Robot</h4>
+                <p>Complete design and implementation of a line-following robot using IR sensors, programmed in C.</p>
+                <div class="tech">
+                    <span>C</span>
+                    <span>Arduino</span>
+                    <span>IR Sensors</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="column robotics">
+            <div class="project-card" onclick="openModal(this.querySelector('.thumb'))">
+                <img class="thumb" src="Projects/project8.jpg" alt="Planetary Exploration" onerror="this.src='https://via.placeholder.com/400x250/1a1a1a/818CF8?text=Planetary'">
+                <span class="badge">Robotics</span>
+                <h4>Planetary Exploration with Robot Teams</h4>
+                <p>Research on multi-robot coordination for autonomous planetary exploration and mapping.</p>
+                <div class="tech">
+                    <span>ROS</span>
+                    <span>SLAM</span>
+                    <span>Python</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="column robotics">
+            <div class="project-card" onclick="openModal(this.querySelector('.thumb'))">
+                <img class="thumb" src="Projects/project9.jpg" alt="Robotic Book" onerror="this.src='https://via.placeholder.com/400x250/1a1a1a/818CF8?text=Robotic+Book'">
+                <span class="badge">Robotics</span>
+                <h4>Educational Robotics Book</h4>
+                <p>Author of "Line Follower Robot" – a comprehensive guide to robotics, electronics and C programming.</p>
+                <div class="tech">
+                    <span>Education</span>
+                    <span>Electronics</span>
+                    <span>C</span>
+                </div>
+            </div>
+        </div>
+
+    </div> <!-- end row -->
+
+    <!-- ====== MODAL ====== -->
+    <div id="myModal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="img01">
+        <div id="caption"></div>
     </div>
 
-<!-- END GRID -->
-</div>
+</div> <!-- end main -->
 
-<!-- The Modal -->
-<div id="myModal" class="modal">
-    <span class="close">&times;</span>
-    <img class="modal-content" id="img01">
-    <div id="caption"></div>
-</div>
 
-<!-- JavaScript for Filter and Modal Functionality -->
+<!-- ============================================================= -->
+<!-- SCRIPTS -->
+<!-- ============================================================= -->
 <script>
-// Filter selection function
-filterSelection("all")
-function filterSelection(c) {
-    var x, i;
-    x = document.getElementsByClassName("column");
-    if (c == "all") c = "";
-    
-    for (i = 0; i < x.length; i++) {
-        w3RemoveClass(x[i], "show");
-        if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
+    // ========== FILTER ==========
+    function filterSelection(c) {
+        var x, i;
+        x = document.getElementsByClassName("column");
+        if (c == "all") c = "";
+
+        for (i = 0; i < x.length; i++) {
+            w3RemoveClass(x[i], "show");
+            if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
+        }
+
+        // highlight active button
+        var btns = document.getElementsByClassName("filter-btn");
+        for (i = 0; i < btns.length; i++) {
+            btns[i].classList.remove("active");
+        }
+        var target = document.querySelector('.filter-btn[onclick*="' + c + '"]');
+        if (!target && c === "") {
+            target = document.querySelector('.filter-btn[onclick*="all"]');
+        }
+        if (target) target.classList.add("active");
     }
-}
 
-// Add or remove classes
-function w3AddClass(element, name) {
-    var i, arr1, arr2;
-    
-    arr1 = element.className.split(" ");
-    arr2 = name.split(" ");
-    
-    for (i = 0; i < arr2.length; i++) {
-        if (arr1.indexOf(arr2[i]) == -1) {element.className += " " + arr2[i];}
-    }
-}
-
-function w3RemoveClass(element, name) {
-    var i, arr1, arr2;
-
-    arr1 = element.className.split(" ");
-    arr2 = name.split(" ");
-    
-    for (i = 0; i < arr2.length; i++) {
-        while (arr1.indexOf(arr2[i]) > -1) {
-            arr1.splice(arr1.indexOf(arr2[i]), 1);     
+    function w3AddClass(element, name) {
+        var arr1 = element.className.split(" ");
+        var arr2 = name.split(" ");
+        for (var i = 0; i < arr2.length; i++) {
+            if (arr1.indexOf(arr2[i]) == -1) {
+                element.className += " " + arr2[i];
+            }
         }
     }
-    
-    element.className = arr1.join(" ");
-}
 
-// Add active class to the current button (highlight it)
-var btnContainer = document.getElementById("myBtnContainer");
-var btns = btnContainer.getElementsByClassName("btn");
-for (var i = 0; i < btns.length; i++) {
-    btns[i].addEventListener("click", function(){
-        var current = document.getElementsByClassName("active");
-        current[0].className = current[0].className.replace(" active", "");
-        this.className += " active";
+    function w3RemoveClass(element, name) {
+        var arr1 = element.className.split(" ");
+        var arr2 = name.split(" ");
+        for (var i = 0; i < arr2.length; i++) {
+            while (arr1.indexOf(arr2[i]) > -1) {
+                arr1.splice(arr1.indexOf(arr2[i]), 1);
+            }
+        }
+        element.className = arr1.join(" ");
+    }
+
+    // ========== MODAL ==========
+    function openModal(img) {
+        var modal = document.getElementById("myModal");
+        var modalImg = document.getElementById("img01");
+        var captionText = document.getElementById("caption");
+
+        modalImg.src = img.src;
+        // get caption from parent card
+        var card = img.closest('.project-card');
+        var title = card.querySelector('h4')?.innerText || 'Project';
+        var desc = card.querySelector('p')?.innerText || '';
+        captionText.innerHTML = title + ' — ' + desc;
+
+        modalImg.onload = function() {
+            var w = this.naturalWidth;
+            var h = this.naturalHeight;
+            if (w > h) {
+                this.style.width = '80%';
+                this.style.height = 'auto';
+            } else {
+                this.style.height = '80vh';
+                this.style.width = 'auto';
+            }
+        };
+
+        modal.style.display = "block";
+        document.body.style.overflow = "hidden";
+    }
+
+    function closeModal() {
+        document.getElementById("myModal").style.display = "none";
+        document.body.style.overflow = "auto";
+    }
+
+    window.onclick = function(event) {
+        var modal = document.getElementById("myModal");
+        if (event.target == modal) closeModal();
+    };
+
+    document.addEventListener('keydown', function(e) {
+        if (e.key === "Escape") closeModal();
     });
-}
 
-// Open the modal and display the clicked image
-function openModal(img) {
-    var modal = document.getElementById("myModal");
-    var modalImg = document.getElementById("img01");
-    var captionText = document.getElementById("caption");
-    
-    modal.style.display = "block";
-    modalImg.src = img.src; // Set the source of the modal image
-    captionText.innerHTML = img.alt; // Set the caption text
-}
-
-// Get the close button and close modal when clicked
-var span = document.getElementsByClassName("close")[0];
-span.onclick = function() { 
-   var modal = document.getElementById("myModal");
-   modal.style.display = "none";
-}
+    // show all by default
+    filterSelection('all');
 </script>
-
-<!-- END MAIN -->
-</div>
 
 </body>
 </html>
